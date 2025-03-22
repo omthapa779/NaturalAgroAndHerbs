@@ -1,0 +1,142 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-color);
+    font-family: var(--primary-font);
+}
+
+:root{
+    --primary_color: #2C5F2D;
+    --background-color: #FAF3E0;
+    --text-color:  #4A4A4A;
+    --accent-color: #E4C988;
+    --black-color: black;
+
+    --primary-font: "Montserrat Alternates"
+}
+html,body{
+    overflow-x: hidden;
+}
+/* texts */
+a{
+    text-decoration: none;
+}
+h1{
+    font-size: 5vw;
+}
+h2{
+    font-size: 3vw;
+}
+h3{
+    font-size: 1.1vw;
+}
+
+.social_icons {
+    transition: color 0.3s, transform 0.3s;
+    font-size: 2vw;
+}
+
+/* widths */
+.w_75{
+    width: 75%;
+}
+.w_100{
+    width: 100%;
+}
+
+/* heights */
+.h_10vh{
+    height: 10vh;
+}
+.h_85vh{
+    height: 85vh;
+}
+.h_100vh{
+    height: 100vh;
+}
+.h_85{
+    height: 85%;
+}
+.h_100{
+    height: 100%;
+}
+
+/* paddings */
+.padding_s10{
+    padding-right: 10vw;
+    padding-left: 10vw;
+}
+.padding_vxs{
+    padding-top: 2.5vh;
+    padding-bottom: 2.5vh;
+}
+
+/* flex */
+.flex{
+    display: flex;
+}
+.flex_cl{
+    display: flex;
+    flex-direction: column;
+}
+.flex_c{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* justifications */
+.justify_sb{
+    justify-content: space-between;
+}
+.justify_fe{
+    justify-content: flex-end;
+}
+
+/* alignments*/
+.align_c{
+    align-items: center;
+}
+.align_fe{
+    align-items: flex-end;
+}
+
+/* gaps */
+.gap_xs{
+    gap: 1.5vw;
+}
+.gap_xvh{
+    gap: 1vh;
+}
+
+/* buttons */
+.primary_link_button{
+    background-color: var(--primary_color);
+    color: var(--background-color);
+    padding: 1.5vh 3vw;
+    border-radius: 0.7vw;
+    width: fit-content;
+}
+.secondary_link_button{
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+/* colors */
+.black_cl{
+    color: var(--black-color);
+}
+.background_cl{
+    color: var(--background-color);
+}
+
+/* font_weights */
+.font_w400{
+    font-weight: 400;
+}
+.font_w500{
+    font-weight: 500;
+}
