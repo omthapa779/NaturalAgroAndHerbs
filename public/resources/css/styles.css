@@ -162,7 +162,7 @@ h3{
         padding-left: 5vw;
     }
 }
-@media(max-width:699px){
+@media(max-width:699px){s
     h1{
         font-size: 13vw;
     }
@@ -173,3 +173,4 @@ h3{
         font-size: 3.5vw;
     }
 }
+
