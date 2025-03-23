@@ -7,7 +7,7 @@ const lenis = new Lenis({
 lenis.on("scroll", (e) => {
   // Only log when needed for debugging
   // console.log(e)
-})
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   // Use more efficient selectors and event delegation where possible
@@ -236,5 +236,355 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     }
   }
+ 
+  function initGridInteractions() {
+    const gridBlocks = document.querySelectorAll('.grid_block');
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    gridBlocks.forEach(block => {
+      // Create a GSAP context for each block to optimize performance
+      const ctx = gsap.context(() => {
+        const overlay = block.querySelector('.overlay');
+        const content = block.querySelector('.grid_content');
+        const title = block.querySelector('h2');
+        const subtitle = block.querySelector('h3');
+        
+        // Prepare hover animation timeline but don't play it yet
+        const hoverTl = gsap.timeline({ paused: true });
+        
+        hoverTl
+          .to(overlay, { 
+            opacity: 0.4, 
+            duration: 0.5, 
+            ease: "power2.out" 
+          }, 0)
+          .to(block, { 
+            scale: 1.02, 
+            duration: 0.5, 
+            ease: "power2.out" 
+          }, 0)
+          .to(content, { 
+            y: "-1vh", 
+            duration: 0.5, 
+            ease: "power2.out" 
+          }, 0)
+          .to(title, { 
+            x: "0.5vw", 
+            opacity: 1, 
+            duration: 0.4, 
+            ease: "power2.out" 
+          }, 0)
+          .to(subtitle, { 
+            x: "0.8vw", 
+            opacity: 1, 
+            duration: 0.4, 
+            delay: 0.05, 
+            ease: "power2.out" 
+          }, 0);
+        
+        if (!isTouchDevice) {
+          // For non-touch devices, use hover
+          block.addEventListener('mouseenter', () => hoverTl.play());
+          block.addEventListener('mouseleave', () => hoverTl.reverse());
+        } else {
+          // For touch devices, add touch feedback
+          const touchFeedback = document.createElement('div');
+          touchFeedback.className = 'touch-feedback';
+          block.appendChild(touchFeedback);
+          
+          // Touch start event
+          block.addEventListener('touchstart', () => {
+            gsap.to(touchFeedback, {
+              opacity: 1,
+              duration: 0.2
+            });
+            
+            // Play a shorter version of the animation
+            gsap.to(overlay, { opacity: 0.4, duration: 0.3 });
+            gsap.to(block, { scale: 0.98, duration: 0.3 });
+          }, { passive: true });
+          
+          // Touch end event
+          block.addEventListener('touchend', () => {
+            gsap.to(touchFeedback, {
+              opacity: 0,
+              duration: 0.3
+            });
+            
+            // Reverse the animation
+            gsap.to(overlay, { opacity: 0.7, duration: 0.3, delay: 0.1 });
+            gsap.to(block, { scale: 1, duration: 0.3, delay: 0.1 });
+          }, { passive: true });
+        }
+        
+        // Add click/tap ripple effect for all devices
+        const addRipple = (e) => {
+          // Create ripple element
+          const ripple = document.createElement('div');
+          ripple.className = 'ripple-effect';
+          
+          // Position the ripple at click/tap point
+          const rect = block.getBoundingClientRect();
+          const x = (e.clientX || e.touches[0].clientX) - rect.left;
+          const y = (e.clientY || e.touches[0].clientY) - rect.top;
+          
+          // Set ripple styles
+          ripple.style.cssText = `
+            position: absolute;
+            left: ${x}px;
+            top: ${y}px;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10;
+          `;
+          
+          block.appendChild(ripple);
+          
+          // Animate the ripple
+          gsap.to(ripple, {
+            width: Math.max(block.offsetWidth, block.offsetHeight) * 2,
+            height: Math.max(block.offsetWidth, block.offsetHeight) * 2,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.out",
+            onComplete: () => {
+              ripple.remove();
+            }
+          });
+        };
+        
+        // Add event listeners for both click and touch
+        block.addEventListener('click', addRipple);
+        block.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 1) {
+            addRipple(e);
+          }
+        }, { passive: true });
+      }, block);
+      
+      // Store the context on the element for cleanup if needed
+      block._gsapContext = ctx;
+    });
+  }
+  
+  // Update the animateGridOnLoad function to work better on mobile
+  function animateGridOnLoad() {
+    const gridBlocks = document.querySelectorAll('.grid_block');
+    const isMobile = window.innerWidth <= 699;
+    
+    gsap.set(gridBlocks, { 
+      y: isMobile ? "3vh" : "5vh", 
+      opacity: 0 
+    });
+    
+    gsap.to(gridBlocks, {
+      y: 0,
+      opacity: 1,
+      stagger: isMobile ? 0.05 : 0.1,
+      duration: isMobile ? 0.6 : 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".popular_categories",
+        start: "top 90%",
+        once: true
+      }
+    });
+  }
+  
+  // Add a resize handler to adjust for screen size changes
+  window.addEventListener('resize', () => {
+    // Reinitialize animations if needed
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
+  }, { passive: true });
+  
+  // Initialize ScrollTrigger if not already done
+  if (typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    animateGridOnLoad();
+  } else {
+    // If ScrollTrigger isn't loaded, add it dynamically
+    const scrollTriggerScript = document.createElement('script');
+    scrollTriggerScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js";
+    scrollTriggerScript.onload = animateGridOnLoad;
+    document.head.appendChild(scrollTriggerScript);
+  }
+  initProductCarousel();
 })
 
+function initProductCarousel() {
+  const carousel = document.querySelector('.product_carousel');
+  if (!carousel) return;
+  
+  // Get carousel elements
+  const cards = carousel.querySelectorAll('.product_card:not(.clone)');
+  const totalOriginalCards = cards.length;
+  
+  // Navigation buttons
+  const prevBtn = document.querySelector('.prev_btn');
+  const nextBtn = document.querySelector('.next_btn');
+  
+  // Variables for carousel state
+  let currentIndex = 0;
+  let isAnimating = false;
+  let autoScrollInterval;
+  
+  // Set initial position
+  gsap.set(carousel, { x: 0 });
+  
+  // Function to get visible cards count based on screen width
+  function getVisibleCardsCount() {
+    const viewportWidth = window.innerWidth;
+    if (viewportWidth <= 820) return 1; // iPad and smaller devices show 1
+    if (viewportWidth <= 999) return 2; // Larger tablets show 2
+    return 3; // Desktop shows 3
+  }
+  
+  // Function to calculate card width based on current viewport
+  function getCardWidth() {
+    const card = cards[0];
+    return card.offsetWidth + parseFloat(getComputedStyle(card).marginRight);
+  }
+  
+  // Function to calculate offset for centering (for single card view)
+  function getCenteringOffset() {
+    const visibleCount = getVisibleCardsCount();
+    if (visibleCount === 1) {
+      const wrapperWidth = carousel.parentElement.offsetWidth;
+      const cardWidth = getCardWidth();
+      // Calculate the offset to center the card
+      // We subtract the card width and add half of the remaining space on each side
+      return (wrapperWidth - cardWidth) / 2 - parseFloat(getComputedStyle(carousel).paddingLeft);
+    }
+    return 0;
+  }
+  
+  // Function to scroll to a specific index
+  function scrollToIndex(index, duration = 0.5) {
+    if (isAnimating) return;
+    isAnimating = true;
+    
+    // Calculate target position
+    const cardWidth = getCardWidth();
+    const centeringOffset = getCenteringOffset();
+    const targetX = -index * cardWidth + centeringOffset;
+    
+    // Create animation
+    gsap.to(carousel, {
+      x: targetX,
+      duration: duration,
+      ease: "power2.out",
+      onComplete: () => {
+        // Check if we need to loop
+        if (index >= totalOriginalCards) {
+          // Jump to first slide without animation
+          currentIndex = 0;
+          gsap.set(carousel, { x: centeringOffset });
+        } else if (index < 0) {
+          // Jump to last slide without animation
+          currentIndex = totalOriginalCards - 1;
+          gsap.set(carousel, { x: -currentIndex * cardWidth + centeringOffset });
+        } else {
+          currentIndex = index;
+        }
+        isAnimating = false;
+      }
+    });
+  }
+  
+  // Function to go to next slide - ALWAYS move by exactly one card
+  function nextSlide() {
+    scrollToIndex(currentIndex + 1);
+  }
+  
+  // Function to go to previous slide - ALWAYS move by exactly one card
+  function prevSlide() {
+    scrollToIndex(currentIndex - 1);
+  }
+  
+  // Set up auto scroll - move by one card at a time
+  function startAutoScroll() {
+    // Clear any existing interval
+    stopAutoScroll();
+    
+    // Create new interval
+    autoScrollInterval = setInterval(() => {
+      nextSlide();
+    }, 4000); // Scroll every 4 seconds
+  }
+  
+  // Function to stop auto scroll
+  function stopAutoScroll() {
+    if (autoScrollInterval) {
+      clearInterval(autoScrollInterval);
+    }
+  }
+  
+  // Add event listeners to buttons
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      // Restart auto scroll after manual navigation
+      startAutoScroll();
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      // Restart auto scroll after manual navigation
+      startAutoScroll();
+    });
+  }
+  
+  // Pause auto scroll on hover
+  carousel.addEventListener('mouseenter', stopAutoScroll);
+  carousel.addEventListener('mouseleave', startAutoScroll);
+  
+  // Initial positioning with centering
+  const initialOffset = getCenteringOffset();
+  if (initialOffset !== 0) {
+    gsap.set(carousel, { x: initialOffset });
+  }
+  
+  // Handle window resize
+  const debouncedResize = debounce(() => {
+    // Recalculate card width and centering offset
+    const cardWidth = getCardWidth();
+    const centeringOffset = getCenteringOffset();
+    
+    // Update position based on new card width and centering
+    gsap.set(carousel, { x: -currentIndex * cardWidth + centeringOffset });
+  }, 250);
+  
+  window.addEventListener('resize', debouncedResize);
+  
+  // Start auto scroll
+  startAutoScroll();
+  
+  // Utility function for debouncing
+  function debounce(func, wait) {
+    let timeout;
+    return function() {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func.apply(context, args);
+      }, wait);
+    };
+  }
+  
+  // Memory optimization: Store the carousel instance for cleanup if needed
+  carousel._carouselData = {
+    cleanup: () => {
+      stopAutoScroll();
+      window.removeEventListener('resize', debouncedResize);
+    }
+  };
+}

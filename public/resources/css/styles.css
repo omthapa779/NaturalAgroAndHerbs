@@ -28,10 +28,16 @@ h1{
     font-size: 5vw;
 }
 h2{
-    font-size: 3vw;
+    font-size: 2.7vw;
 }
 h3{
+    font-size: 2vw;
+}
+h4{
     font-size: 1.1vw;
+}
+h5{
+    font-size: 0.8vw;
 }
 
 .social_icons {
@@ -43,6 +49,12 @@ h3{
 }
 
 /* widths */
+.w_fc{
+    width: fit-content;
+}
+.w_50{
+    width: 50%;
+}
 .w_75{
     width: 75%;
 }
@@ -60,11 +72,20 @@ h3{
 .h_100vh{
     height: 100vh;
 }
+.h_50{
+    height: 50%;
+}
+.h_75{
+    height: 75%;
+}
 .h_85{
     height: 85%;
 }
 .h_100{
     height: 100%;
+}
+.h_fc{
+    height: fit-content;
 }
 
 /* paddings */
@@ -75,6 +96,10 @@ h3{
 .padding_vxs{
     padding-top: 2.5vh;
     padding-bottom: 2.5vh;
+}
+.padding_vs{
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
 
 /* flex */
@@ -118,17 +143,9 @@ h3{
     gap: 1vh;
 }
 
-/* buttons */
-.primary_link_button{
-    background-color: var(--primary_color);
-    color: var(--background-color);
-    padding: 1.5vh 3vw;
-    border-radius: 0.7vw;
-    width: fit-content;
-}
-.secondary_link_button{
-    background-color: var(--accent-color);
-    color: var(--text-color);
+/* margins */
+.mtop_s{
+    margin-top: 2.5vh;
 }
 
 /* colors */
@@ -137,6 +154,9 @@ h3{
 }
 .background_cl{
     color: var(--background-color);
+}
+.primary_cl{
+    color: var(--primary_color);
 }
 
 /* font_weights */
@@ -147,6 +167,16 @@ h3{
     font-weight: 500;
 }
 
+/* text_alignments */
+.text_ac{
+    text-align: center;
+}
+
+/* overflow */
+.overflow_hidden {
+    overflow: hidden;
+}
+
 @media (max-width: 999px) {
     h1{
         font-size: 10vw;
@@ -155,11 +185,21 @@ h3{
         font-size: 6vw;
     }
     h3{
+        font-size: 4vw;
+    }
+    h4{
         font-size: 2.5vw;
+    }
+    h5{
+        font-size: 2vw;
     }
     .padding_s10{
         padding-right: 5vw;
         padding-left: 5vw;
+    }
+    .padding_vs {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
     }
 }
 @media(max-width:699px){s
@@ -169,7 +209,7 @@ h3{
     h2{
         font-size: 7vw;
     }
-    h3{
+    h4{
         font-size: 3.5vw;
     }
 }

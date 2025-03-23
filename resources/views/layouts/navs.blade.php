@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="{{ asset('./resources/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('./resources/css/specifics.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Load GSAP with defer to improve page load performance -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
     <div class="main_container padding_vxs">
@@ -17,16 +18,16 @@
             <div class="right_nav h_100 w_100 flex align_c gap_xs">
                 <img src="{{ asset('./resources/images/logo.png') }}" alt="Logo | Natural Agro and Herbs" class="h_100">
                 <div class="links_holder flex gap_xs">
-                    <h3><a href="/">Home</a></h3>
-                    <h3><a href="/">About</a></h3>
-                    <h3><a href="/">Products</a></h3>
-                    <h3><a href="/">Process</a></h3>
-                    <h3><a href="/">Contact</a></h3>
+                    <h4><a href="/">Home</a></h4>
+                    <h4><a href="/">About</a></h4>
+                    <h4><a href="/">Products</a></h4>
+                    <h4><a href="/">Process</a></h4>
+                    <h4><a href="/">Contact</a></h4>
                 </div>
             </div>
             <div class="left_nav h_100 flex  align_c gap_xs">
-                <h3 class="primary_link_button no_wrap"><a href="#" class="background_cl">View Products</a></h3>
-                <h3 class="primary_link_button secondary_link_button no_wrap"><a href="#">Inquire Now!</a></h3>
+                <h4><a href="#" class="custom-button primary">View Products</a></h4>
+                <h4><a href="#" class="custom-button secondary">Explore Our Oils</a></h4>
             </div>
         </navs>
         @yield('content')
@@ -35,4 +36,3 @@
     <script src="{{ asset('./resources/scripts/logic.js') }}" defer></script>
 </body>
 </html>
-
