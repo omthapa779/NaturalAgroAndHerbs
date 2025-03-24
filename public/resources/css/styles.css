@@ -203,7 +203,7 @@ h5{
 
 /* overflow */
 .overflow_hidden {
-    overflow: hidden;
+    overflow: hidden !important;
 }
 /* border-radius */
 .bradius_s{

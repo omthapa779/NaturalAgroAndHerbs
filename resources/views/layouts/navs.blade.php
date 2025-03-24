@@ -19,10 +19,10 @@
                 <img src="{{ asset('./resources/images/logo.png') }}" alt="Logo | Natural Agro and Herbs" class="h_100">
                 <div class="links_holder flex gap_xs">
                     <h4><a href="/">Home</a></h4>
-                    <h4><a href="/">About</a></h4>
-                    <h4><a href="/">Products</a></h4>
-                    <h4><a href="/">Process</a></h4>
-                    <h4><a href="/">Contact</a></h4>
+                    <h4><a href="/about">About</a></h4>
+                    <h4><a href="/products">Products</a></h4>
+                    <h4><a href="/process">Process</a></h4>
+                    <h4><a href="/contact">Contact</a></h4>
                 </div>
             </div>
             <div class="left_nav h_100 flex  align_c gap_xs">
@@ -45,7 +45,7 @@
                     <h3 class="accent_cl no_wrap">Quick Links</h3>
 
                     <div class="links_holder mtop_s flex_cl gap_xvh">
-                        <a href="#"><h4 class=" footer_link font_w400 background_cl">Home</h4></a>
+                        <a href="/"><h4 class=" footer_link font_w400 background_cl">Home</h4></a>
                         <a href="#"><h4 class=" footer_link font_w400 background_cl">About</h4></a>
                         <a href="#"><h4 class=" footer_link font_w400 background_cl">Process</h4></a>
                         <a href="#"><h4 class=" footer_link font_w400 background_cl">Products</h4></a>

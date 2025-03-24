@@ -415,8 +415,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.head.appendChild(scrollTriggerScript);
   }
 
+  //footer links
   const footerLinks = document.querySelectorAll('.footer_link');
-
   footerLinks.forEach(link => {
     link.addEventListener('mouseenter', () => { // Changed to 'mouseenter' for hover effect
       console.log('hovered');
@@ -434,6 +434,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  //404
+  const tl = gsap.timeline();
+        
+  // Animate the 404 text
+  tl.from('.animated_404 h1', {
+      y: "-10vh",
+      opacity: 0,
+      stagger: 0.2,
+      duration: 1,
+      ease: "back.out(1.7)"
+  })
+  .from('.oops_message', {
+      y: "5vh",
+      opacity: 0,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power3.out"
+  }, "-=0.5")
+  .from('.error_actions', {
+      y: "5vh",
+      position: "relative",
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out"
+  }, "-=0.5");
+
+  // Animate the 404 numbers continuously
+  gsap.to('.first_4', {
+      rotation: -5,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+  });
+
+  gsap.to('.last_4', {
+      rotation: 5,
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+  });
+        
   initProductCarousel();
 
   const cleanupProcess = initProcessTimeline();
