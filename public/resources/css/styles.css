@@ -58,6 +58,9 @@ h5{
 .w_75{
     width: 75%;
 }
+.w_85{
+    width: 85%;
+}
 .w_100{
     width: 100%;
 }
@@ -90,8 +93,8 @@ h5{
 
 /* paddings */
 .padding_s10{
-    padding-right: 10vw;
-    padding-left: 10vw;
+    padding-right: 15vw;
+    padding-left: 15vw;
 }
 .padding_vxs{
     padding-top: 2.5vh;
@@ -145,6 +148,10 @@ h5{
 .gap_xvh{
     gap: 1vh;
 }
+/* objects */
+.object_fc{
+    object-fit: cover;
+}
 
 /* margins */
 .mtop_s{
@@ -152,6 +159,12 @@ h5{
 }
 .mtop_m{
     margin-top: 5vh;
+}
+.mleft_1{
+    margin-left: 1vw;
+}
+.mleft_s{
+    margin-left: 2.5vw;
 }
 
 /* colors */
@@ -181,6 +194,10 @@ h5{
 /* overflow */
 .overflow_hidden {
     overflow: hidden;
+}
+/* border-radius */
+.bradius_s{
+    border-radius: 0.7vw;
 }
 
 @media (max-width: 999px) {

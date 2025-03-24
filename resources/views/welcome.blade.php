@@ -47,7 +47,7 @@
     </div>
 </section>
 <section class="popular_categories w_100 h_100vh padding_vs padding_s10 gap_xvh">
-    <h2 class="black_cl">POPULAR CATEGORIES</h2>
+    <h2 class="black_cl">Popular Categories</h2>
     <div class="grid h_100 padding_vxs">
         <div class="grid_block h_100 div1" style="background-image: url('https://img.freepik.com/premium-psd/argan-oil-products-mockup_23-2149287503.jpg?w=740')">
             <a href="" class="h_100">
@@ -413,6 +413,101 @@
         <button class="control_button next_step flex_c">
             <h3><i class="ri-arrow-right-line"></i></h3>
         </button>
+    </div>
+</section>
+<section class="benefits_home w_100 h_100vh padding_vs padding_s10 flex justify_sb gap_xs align_c">
+    <div class="benefits_home_content w_100 h_100 flex_cl gap_xvh">
+        <h2 class="black_cl w_75">Benefits of Essentials Oils</h2>
+        <h4 class="font_w500 w_85">Essential Oils, derived from varaious plants, have been utilized for centuries in alternative 
+            medicine practices like aromatherapy. These concentrated extracts offer a multitude of health benefits, ehancing both physicaland mental well-being.
+        </h4>
+        <ul class="mtop_s flex_cl gap_xvh mleft_1">
+            <li><h4 class="font_w500">Stress Reduction</h4></li>
+            <li><h4 class="font_w500">Improved Sleep Quality</h4></li>
+            <li><h4 class="font_w500">Improved Sleep Quality</h4></li>
+            <li><h4 class="font_w500">Pain Relief</h4></li>
+            <li><h4 class="font_w500">Respiratory Benefits</h4></li>
+        </ul>
+
+        <h4><a href="#" class="custom-button primary mtop_s">Explore Our Oils</a></h4>
+    </div>
+    <div class="image_holder_benefit w_100 h_100 overflow_hidden  bradius_s">
+        <img src="{{asset('./resources/images/home/lemon_grass.png')}}" class="object_fc w_100 h_100" alt="Benefits of Essential Oils">
+    </div>
+</section>
+
+<section class="contact_section w_100 h_100vh padding_vs padding_s10 flex justify_sb gap_xs align_c">
+    <div class="left_contact_section w_100 h_100 flex_cl justify_sb">
+        <div class="top_content_contact flex_cl gap_xvh">
+            <h2 class="black_cl w_75">Bringing Nature's Best to You.</h2>
+            <h4 class="font_w400 w_85">We're here to offer you pure, high-quality essential oils
+                straight from the heart of nature.
+            </h4>
+        </div>
+        <div class="bottom_content_contact">
+            <a href="#"><h4 class="text_button primary_cl font_w500">Other Contact Options <i class="ri-arrow-right-line primary_cl"></i></h4></a>
+        </div>
+    </div>
+    <div class="right_contact_section w_100 h_100 flex_c">
+        <form action="" class="contact_form w_100 h_100 flex_cl justify_sb" method="POST">            
+            <div class="form_row w_100 flex gap_xs">
+                <div class="form_field w_100 flex_cl">
+                    <label for="name" class="form_label"><h5 class="font_w500">Full Name</h5></label>
+                    <input class="contact_input w_100" type="text" id="name" name="name" required placeholder="Enter Your Full Name">
+                </div>
+            </div>
+            <div class="form_row w_100 flex gap_xs">
+                <div class="form_field w_100 flex_cl">
+                    <label for="email" class="form_label"><h5 class="font_w500">Email Address</h5></label>
+                    <input class="contact_input w_100" type="email" id="email" name="email" required placeholder="Enter Your Email Address">
+                </div>
+            </div>
+            
+            <!-- Phone and Inquiry Type in one row -->
+            <div class="form_row w_100 flex gap_xs">
+                <div class="form_field w_50 flex_cl">
+                    <label for="number" class="form_label"><h5 class="font_w500">Contact Number</h5></label>
+                    <input class="contact_input w_100" type="tel" id="number" name="number" required placeholder="Enter Your Contact Number">
+                </div>
+                <div class="form_field w_50 flex_cl">
+                    <label for="inquiry" class="form_label"><h5 class="font_w500">Inquiry Type</h5></label>
+                    <select class="contact_input w_100" id="inquiry" name="inquiry" required>
+                        <option value="">Select Inquiry Type</option>
+                        <option value="product_inquiry">Product Inquiry</option>
+                        <option value="business_deal">Business Deals</option>
+                        <option value="complaints_queries">Complaints / Queries</option>
+                        <option value="custom_order">Custom Order</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Contact Method and Company in one row -->
+            <div class="form_row w_100 flex gap_xs">
+                <div class="form_field w_50 flex_cl">
+                    <label for="contact_method" class="form_label"><h5 class="font_w500">Preferred Contact Method</h5></label>
+                    <select class="contact_input w_100" id="contact_method" name="contact_method" required>
+                        <option value="">Select Preferred Method</option>
+                        <option value="email">Email</option>
+                        <option value="phone">Phone Call</option>
+                        <option value="whatsapp">WhatsApp</option>
+                        <option value="any">Any</option>
+                    </select>
+                </div>
+                <div class="form_field w_50 flex_cl">
+                    <label for="company" class="form_label"><h5 class="font_w500">Company Name (Optional)</h5></label>
+                    <input class="contact_input w_100" type="text" id="company" name="company" placeholder="Company Name (Optional)">
+                </div>
+            </div>
+            
+            <!-- Message as a single input -->
+            <div class="form_field w_100 flex_cl">
+                <label for="message" class="form_label"><h5 class="font_w500">Your Message</h5></label>
+                <textarea class="contact_input w_100" rows="4" id="message" name="message" required placeholder="Your Message Here.."></textarea>
+            </div>
+            
+            <button type="submit" class="form_button w_100 mtop_s"><h4 class="background_cl">Send Inquiry</h4></button>
+        </form> 
     </div>
 </section>
 @endsection

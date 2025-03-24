@@ -26,8 +26,7 @@
                 </div>
             </div>
             <div class="left_nav h_100 flex  align_c gap_xs">
-                <h4><a href="#" class="custom-button primary">View Products</a></h4>
-                <h4><a href="#" class="custom-button secondary">Explore Our Oils</a></h4>
+                <h4><a href="#" class="custom-button secondary">Inquire Now!</a></h4>
             </div>
         </navs>
         @yield('content')

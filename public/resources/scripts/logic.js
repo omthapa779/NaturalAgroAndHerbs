@@ -421,6 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Store cleanup function for memory management
   window._cleanupFunctions = window._cleanupFunctions || {};
   window._cleanupFunctions.processSection = cleanupProcess;
+  
 })
 
 function initProductCarousel() {

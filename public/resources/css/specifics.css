@@ -571,12 +571,72 @@
     margin: 0;
     transition: color 0.3s ease;
   }
-  
+
+.contact_input{
+  font-size: 0.95vw;
+  outline: none;
+  padding: 1vh 1vw;
+  border-radius: 0.7vw;
+  border: 0.1vw solid black;
+  transition: 0.6s all ease-in-out;
+}
+.contact_form{
+  background-color: white;
+  padding: 5vh 2vw;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.contact_input:focus{
+  transition: 0.6s all ease-in-out;
+  color: var(--black-color);
+  border: 0.15vw solid var(--primary_color);
+  font-weight: 600;
+}
+.form_button{
+  padding: 2vh 2vh;
+  background-color: var(--primary_color);
+  outline: none;
+  border: none;
+}
+.contact_form textarea{
+  max-width: 100%;
+  max-height: 25vh;
+}
+.form_field {
+  margin-bottom: 1.5vh;
+}
+
+.form_label {
+  margin-bottom: 0.5vh;
+}
+
+.form_row {
+  margin-bottom: 1.5vh;
+}
+
+/* Add this to your existing contact_input styles */
+.contact_input::placeholder {
+  opacity: 0.6;
+}
+
+/* Add this to your existing form_button styles */
+.form_button:hover {
+  background-color: #234a24;
+  transform: translateY(-0.3vh);
+}
 @media(max-width: 999px){
+  .benefits_home {
+    flex-direction: column-reverse;
+  }
+  .contact_section {
+    flex-direction: column;
+  }
+  .contact_input {
+    font-size: 2.5vw;
+  }
     .popular_categories{
         height: fit-content;
     }
-    .left_nav, .left_hero, .featured_products .text_button{
+    .left_nav, .left_hero, .featured_products .text_button, .bottom_content_contact{
         display: none;
     }
     .right_nav{
@@ -658,8 +718,15 @@
         justify-content: center;
         padding: 0 5vw; /* Increase padding for navigation buttons */
     }
-    .image_holder{
+    .image_holder, .benefits_home h4{
         width: 100%;
+    }
+    .benefits_home ul{
+      margin-left: 4vw;
+    }
+    .benefits_home .custom-button{
+      width: 100%;
+      text-align: center;
     }
     .process_section {
         height: auto;
@@ -713,10 +780,22 @@
       }
 }
 @media (max-width: 699px){
+  .contact_input {
+    font-size: 4vw;
+  }
+  .form_row{
+    flex-direction: column;
+  }
+  .contact_section{
+    height: fit-content;
+  }
+  .contact_form{
+    padding: 2vh 3vw;
+  }
     .links_holder h4 a {
        display: none;
     }      
-    .right_hero h2, .right_hero h4, .about_us_section_holder h2, .about_us_section_holder h4{
+    .right_hero h2, .right_hero h4, .about_us_section_holder h2, .about_us_section_holder h4, .form_field{
         width: 100%;
     }
     .text_button{
