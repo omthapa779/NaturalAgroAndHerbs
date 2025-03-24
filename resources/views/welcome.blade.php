@@ -39,7 +39,7 @@
         <h4 class="font_w500 text_ac w_50">At Natural Agro and Herbs, We produce premium essentials oils from wild and organically grown herbs and spices, adhering to stringent E.U and U.S.D.A standards.
             Our advanced steam distillation techniques ensure the highest quality, delivering nature's pure essence to our customer worldwide.
         </h4>
-        <a href="#"><h4 class="text_button primary_cl">Our Story <i class="ri-arrow-right-line primary_cl"></i></h4></a>
+        <a href="/about"><h4 class="text_button primary_cl">Learn More. <i class="ri-arrow-right-line primary_cl"></i></h4></a>
     </div>
     <div class="about_us_images w_100 h_100 flex_c">
         <img src="{{ asset('./resources/images/home/lemon_grass.png') }}" class="about_image first">
@@ -269,7 +269,7 @@
         <!-- Step 1: Harvest -->
         <div class="process_detail h_100 active flex w_100" data-step="1">
             <div class="detail_text w_50 flex_cl justify_c">
-                <h3 class="black_cl">Harvesting at Peak Potency</h3>
+                <h3 class="black_cl no_wrap">Harvesting at Peak Potency</h3>
                 <h4 class="font_w400 mtop_s">We carefully select and harvest herbs and plants at their optimal time, when essential oil content is at its highest concentration.</h4>
                 <ul class="detail_list mtop_m w_100">
                     <li class="detail_item flex gap_xs mtop_s">

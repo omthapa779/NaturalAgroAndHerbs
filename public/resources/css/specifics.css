@@ -678,6 +678,121 @@
       transform: translateX(-50%) scale(0.2);
   }
 }
+
+.mission_tab{
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0.5vw 1.5vw;
+}
+.icon_holder{
+  background-color: var(--primary_color);
+  border-radius: 50%;
+  width: 4vw;
+  height: 8vh;
+  animation: circle 2.5s infinite ease-out;
+}
+@keyframes circle {
+ from{
+  transform: rotate(-360deg);
+ }
+ to{
+  transform: rotate(360deg);
+ }
+}
+    /* Feature Cards */
+    .features_grid {
+      gap: 2vw;
+  }
+  
+  .feature_card {
+      flex: 1;
+      padding: 3vh 2vw;
+      background-color: white;
+      border-radius: 0.7vw;
+      box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+  }
+  
+  .feature_card:hover {
+      transform: translateY(-0.5vh);
+  }
+  
+  .feature_icon_container {
+      width: 5vw;
+      height: 5vw;
+      background-color: rgba(44, 95, 45, 0.1);
+      border-radius: 50%;
+      font-size: 2vw;
+      color: var(--primary_color);
+  }
+  
+  .feature_indicator {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0.3vh;
+      background-color: var(--primary_color);
+      transition: width 0.3s ease;
+  }
+  
+  .feature_card:hover .feature_indicator {
+      width: 100%;
+  }
+  
+  /* Quality Commitment */
+  .point_dot {
+      width: 1vh;
+      height: 1vh;
+      min-width: 1vh;
+      border-radius: 50%;
+      background-color: var(--primary_color);
+      margin-top: 0.8vh;
+  }
+  
+  .visual_container {
+      width: 80%;
+      height: 50vh;
+      border-radius: 1vw;
+      overflow: hidden;
+      box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.1);
+  }
+  
+  .quality_image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1vw;
+      transition: transform 0.8s ease;
+  }
+  
+  .visual_container:hover .quality_image {
+      transform: scale(1.05);
+  }
+  
+  .quality_badge {
+      position: absolute;
+      top: 2vh;
+      right: 2vw;
+      width: 5vw;
+      height: 5vw;
+      background-color: var(--primary_color);
+      border-radius: 50%;
+      animation: pulse2 2s infinite ease-in-out;
+  }
+  
+  .badge_inner {
+      width: 90%;
+      height: 90%;
+      border-radius: 50%;
+      border: 0.2vh solid var(--background-color);
+  }
+  
+  @keyframes pulse2 {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+  }
 @media(max-width: 999px){
   .error_actions {
     flex-direction: column;
@@ -693,7 +808,17 @@
   .social_icons{
     font-size: 5vw;
   }
-  .benefits_home {
+  .icon_holder{
+    width: 9vw;
+    height: 6.8vh;
+  }
+  .mission_tab{
+    gap: 3vh;
+  }
+  .left_about_page img {
+    object-position: 0% 85%;
+  }
+  .benefits_home, .about_us_page{
     flex-direction: column-reverse;
   }
   .contact_section {
@@ -704,6 +829,24 @@
   }
   .left_link_container {
     padding: 0;
+  }
+  .why_choose_us {
+    height: auto;
+  }
+
+  .section_header h4 {
+      width: 80%;
+  }
+
+  .features_grid {
+      flex-direction: column;
+      gap: 3vh;
+  }
+
+  .feature_icon_container {
+      width: 10vw;
+      height: 10vw;
+      font-size: 5vw;
   }
     .popular_categories{
         height: fit-content;
@@ -853,6 +996,15 @@
 
 }
 @media (max-width: 699px){
+  .feature_icon_container {
+    width: 15vw;
+    height: 15vw;
+    font-size: 8vw;
+  }
+  .icon_holder{
+    width: 15vw;
+    height: 6.9vh;
+  }
   .social_icons {
     font-size: 7vw;
   }

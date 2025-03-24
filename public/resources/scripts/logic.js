@@ -476,7 +476,57 @@ document.addEventListener("DOMContentLoaded", () => {
       yoyo: true,
       ease: "sine.inOut"
   });
-        
+  
+  
+  //about us why choose us section
+  gsap.from('.feature_card', {
+      y: 50,
+      opacity: 0,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+  trigger: '.features_grid',
+  start: "top 80%",
+  once: true
+      }
+  });
+  
+  // Animate feature icons
+  gsap.to('.feature_icon_container i', {
+      rotateY: 360,
+      duration: 3,
+      ease: "power1.inOut",
+      repeat: -1,
+      repeatDelay: 2
+  });
+  
+  
+  // Add hover effect to feature cards
+  const featureCards = document.querySelectorAll('.feature_card');
+  
+  featureCards.forEach(card => {
+      const icon = card.querySelector('.feature_icon_container');
+      
+      card.addEventListener('mouseenter', () => {
+        gsap.to(icon, {
+            y: -10,
+            scale: 1.1,
+            duration: 0.3,
+            ease: "back.out(1.7)"
+        });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        gsap.to(icon, {
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+      });
+  });
+
   initProductCarousel();
 
   const cleanupProcess = initProcessTimeline();
@@ -550,10 +600,10 @@ function initProductCarousel() {
       duration: duration,
       ease: "power2.out",
       onComplete: () => {
-        // Check if we need to loop
-        if (index >= totalOriginalCards) {
-          // Jump to first slide without animation
-          currentIndex = 0;
+  // Check if we need to loop
+  if (index >= totalOriginalCards) {
+    // Jump to first slide without animation
+    currentIndex = 0;
           gsap.set(carousel, { x: centeringOffset });
         } else if (index < 0) {
           // Jump to last slide without animation

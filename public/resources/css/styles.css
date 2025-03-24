@@ -159,6 +159,9 @@ h5{
 .object_fc{
     object-fit: cover;
 }
+.object_pb{
+    object-position: 0% 100%;
+}
 
 /* margins */
 .mtop_s{
@@ -199,6 +202,9 @@ h5{
 /* text_alignments */
 .text_ac{
     text-align: center;
+}
+.text_aj{
+    text-align: justify;
 }
 
 /* overflow */
