@@ -96,6 +96,13 @@ h5{
     padding-right: 15vw;
     padding-left: 15vw;
 }
+.padding_ts{
+    padding-top: 2.5vh;
+}
+.padding_sxs{
+    padding-right: 2.5vw;
+    padding-left: 2.5vw;
+}
 .padding_vxs{
     padding-top: 2.5vh;
     padding-bottom: 2.5vh;
@@ -176,6 +183,9 @@ h5{
 }
 .primary_cl{
     color: var(--primary_color);
+}
+.accent_cl{
+    color: var(--accent-color);
 }
 
 /* font_weights */

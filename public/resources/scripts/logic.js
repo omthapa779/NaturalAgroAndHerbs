@@ -414,6 +414,26 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollTriggerScript.onload = animateGridOnLoad;
     document.head.appendChild(scrollTriggerScript);
   }
+
+  const footerLinks = document.querySelectorAll('.footer_link');
+
+  footerLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => { // Changed to 'mouseenter' for hover effect
+      console.log('hovered');
+      gsap.to(link, { // Animate only the hovered link
+        duration: 0.6,
+        fontWeight: 600,
+      });
+    });
+
+    link.addEventListener('mouseleave', () => { // Reset animation when mouse leaves
+      gsap.to(link, {
+        duration: 0.6,
+        fontWeight: 400, // Adjust to default weight
+      });
+    });
+  });
+
   initProductCarousel();
 
   const cleanupProcess = initProcessTimeline();
@@ -742,3 +762,4 @@ function initProcessTimeline() {
     if (playPauseButton) playPauseButton.removeEventListener('click', toggleAutoPlay);
   };
 }
+

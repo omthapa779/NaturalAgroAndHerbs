@@ -623,7 +623,24 @@
   background-color: #234a24;
   transform: translateY(-0.3vh);
 }
+.footer{
+  background-color: var(--primary_color);
+}
+.author{
+  background-color: var(--text-color);
+}
 @media(max-width: 999px){
+  .footer{
+    flex-direction: column;
+    gap: 7vh;
+  }
+  .links_container {
+    justify-content: left;
+    gap: 10vw;
+  }
+  .social_icons{
+    font-size: 5vw;
+  }
   .benefits_home {
     flex-direction: column-reverse;
   }
@@ -632,6 +649,9 @@
   }
   .contact_input {
     font-size: 2.5vw;
+  }
+  .left_link_container {
+    padding: 0;
   }
     .popular_categories{
         height: fit-content;
@@ -778,8 +798,15 @@
       .timeline_track {
         width: 90%;
       }
+
 }
 @media (max-width: 699px){
+  .social_icons {
+    font-size: 7vw;
+  }
+  .logo_container_footer {
+    gap: 2vh;
+  }
   .contact_input {
     font-size: 4vw;
   }
