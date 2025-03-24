@@ -415,6 +415,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.head.appendChild(scrollTriggerScript);
   }
   initProductCarousel();
+
+  const cleanupProcess = initProcessTimeline();
+  
+  // Store cleanup function for memory management
+  window._cleanupFunctions = window._cleanupFunctions || {};
+  window._cleanupFunctions.processSection = cleanupProcess;
 })
 
 function initProductCarousel() {
@@ -586,5 +592,152 @@ function initProductCarousel() {
       stopAutoScroll();
       window.removeEventListener('resize', debouncedResize);
     }
+  };
+}
+
+function initProcessTimeline() {
+  // Check if process section exists
+  const processSection = document.querySelector('.process_section');
+  if (!processSection) return;
+  
+  // Get elements
+  const timelinePoints = document.querySelectorAll('.timeline_point');
+  const timelineProgress = document.querySelector('.timeline_progress');
+  const processDetails = document.querySelectorAll('.process_detail');
+  const prevButton = document.querySelector('.prev_step');
+  const nextButton = document.querySelector('.next_step');
+  const playPauseButton = document.querySelector('.play_pause');
+  const playPauseIcon = playPauseButton.querySelector('i');
+  
+  // Current step and animation state
+  let currentStep = 1;
+  const totalSteps = timelinePoints.length;
+  let isPlaying = true;
+  let autoPlayInterval;
+  
+  // Function to show a specific step
+  function showStep(stepNumber) {
+    // Update current step
+    currentStep = stepNumber;
+    
+    // Remove all progress classes
+    timelineProgress.classList.remove('progress-step-1', 'progress-step-2', 'progress-step-3', 'progress-step-4', 'progress-step-5');
+    
+    // Add the appropriate progress class
+    timelineProgress.classList.add(`progress-step-${currentStep}`);
+    
+    // Update timeline points
+    timelinePoints.forEach(point => {
+      const pointStep = parseInt(point.dataset.step);
+      if (pointStep === currentStep) {
+        point.classList.add('active');
+      } else {
+        point.classList.remove('active');
+      }
+    });
+    
+    // Update process details
+    processDetails.forEach(detail => {
+      const detailStep = parseInt(detail.dataset.step);
+      if (detailStep === currentStep) {
+        detail.classList.add('active');
+      } else {
+        detail.classList.remove('active');
+      }
+    });
+  }
+  
+  // Function to go to next step
+  function nextStep() {
+    const nextStepNumber = currentStep < totalSteps ? currentStep + 1 : 1;
+    showStep(nextStepNumber);
+  }
+  
+  // Function to go to previous step
+  function prevStep() {
+    const prevStepNumber = currentStep > 1 ? currentStep - 1 : totalSteps;
+    showStep(prevStepNumber);
+  }
+  
+  // Function to toggle auto play
+  function toggleAutoPlay() {
+    if (isPlaying) {
+      // Pause
+      clearInterval(autoPlayInterval);
+      isPlaying = false;
+      playPauseIcon.className = 'ri-play-line';
+    } else {
+      // Play
+      startAutoPlay();
+      isPlaying = true;
+      playPauseIcon.className = 'ri-pause-line';
+    }
+  }
+  
+  // Function to start auto play
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(nextStep, 8000);
+  }
+  
+  // Add click events to timeline points
+  timelinePoints.forEach(point => {
+    point.addEventListener('click', () => {
+      const stepNumber = parseInt(point.dataset.step);
+      showStep(stepNumber);
+      
+      // Reset auto play timer
+      if (isPlaying) {
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+      }
+    });
+  });
+  
+  // Add click events to navigation buttons
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      prevStep();
+      
+      // Reset auto play timer
+      if (isPlaying) {
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+      }
+    });
+  }
+  
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      nextStep();
+      
+      // Reset auto play timer
+      if (isPlaying) {
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+      }
+    });
+  }
+  
+  if (playPauseButton) {
+    playPauseButton.addEventListener('click', toggleAutoPlay);
+  }
+  
+  // Initialize the first step
+  showStep(1);
+  
+  // Start auto play
+  startAutoPlay();
+  
+  // Clean up function for memory management
+  return function cleanup() {
+    clearInterval(autoPlayInterval);
+    
+    timelinePoints.forEach(point => {
+      point.removeEventListener('click', () => {});
+    });
+    
+    if (prevButton) prevButton.removeEventListener('click', () => {});
+    if (nextButton) nextButton.removeEventListener('click', () => {});
+    if (playPauseButton) playPauseButton.removeEventListener('click', toggleAutoPlay);
   };
 }

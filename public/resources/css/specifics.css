@@ -369,6 +369,209 @@
     color: var(--primary_color);
     transition: color 0.3s ease;
 }
+
+/* Process Section Styles */
+.process_section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Timeline Navigation */
+  .timeline_nav {
+    position: relative;
+  }
+  
+  .timeline_track {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* Add this to your CSS */
+.timeline_progress {
+    position: absolute;
+    top: 1vh;
+    left: 0;
+    height: 0.5vh;
+    background-color: var(--primary_color);
+    transition: width 0.5s ease;
+    z-index: 1;
+  }
+  
+  /* Add these classes to control the exact width for each step */
+  .progress-step-1 {
+    width: 0%;
+  }
+  
+  .progress-step-2 {
+    width: 25%;
+  }
+  
+  .progress-step-3 {
+    width: 50%;
+  }
+  
+  .progress-step-4 {
+    width: 75%;
+  }
+  
+  .progress-step-5 {
+    width: 100%;
+  }
+  
+  .timeline_points {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .timeline_points::before {
+    content: "";
+    position: absolute;
+    top: 1vh;
+    left: 0;
+    width: 100%;
+    height: 0.4vh;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .timeline_point {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .point_dot {
+    width: 2vh;
+    height: 2vh;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    border: 0.2vh solid rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .point_label {
+    position: absolute;
+    top: 3vh;
+    white-space: nowrap;
+    color: var(--text-color);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+  }
+  
+  .timeline_point.active .point_dot {
+    background-color: var(--primary_color);
+    border-color: var(--primary_color);
+    transform: scale(1.2);
+  }
+  
+  .timeline_point.active .point_label {
+    color: var(--primary_color);
+    opacity: 1;
+    font-weight: 500;
+  }
+  
+  .timeline_point:hover .point_dot {
+    border-color: var(--primary_color);
+    transform: scale(1.1);
+  }
+  
+  .timeline_point:hover .point_label {
+    opacity: 1;
+  }
+  
+  /* Process Details */
+  .process_content {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .process_detail {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .process_detail.active {
+    display: flex;
+    opacity: 1;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .detail_text {
+    padding-right: 5vw;
+  }
+  
+  .detail_list {
+    list-style: none;
+  }
+  
+  .detail_item {
+    position: relative;
+  }
+  
+  .item_dot {
+    width: 1vh;
+    height: 1vh;
+    min-width: 1vh;
+    border-radius: 50%;
+    background-color: var(--primary_color);
+    margin-top: 0.8vh;
+  }
+  
+  /* Visual Elements */
+  .visual_container {
+    width: 80%;
+    height: 80%;
+    border-radius: 1vw;
+    overflow: hidden;
+    box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.1);
+  }
+  
+  .visual_img {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1vw;
+    transition: transform 0.8s ease;
+  }
+  
+  .visual_container:hover .visual_img {
+    transform: scale(1.03);
+  }
+  
+  /* Control Buttons */
+  .control_button {
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    border: 0.1vw solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .control_button:hover {
+    background-color: var(--primary_color);
+  }
+  
+  .control_button:hover h3 {
+    color: var(--background-color);
+  }
+  
+  .control_button h3 {
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+  
 @media(max-width: 999px){
     .popular_categories{
         height: fit-content;
@@ -458,6 +661,56 @@
     .image_holder{
         width: 100%;
     }
+    .process_section {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+      }
+      
+      .process_content {
+        height: auto;
+        min-height: 60vh;
+      }
+      
+      .process_detail {
+        position: relative;
+        flex-direction: column;
+      }
+      .detail_list {
+        margin-top: 1vh;
+      }
+      .detail_text, .detail_visual {
+        width: 100%;
+        padding: 0;
+      }
+      
+      .detail_visual {
+        order: 1;
+        margin-bottom: 5vh;
+      }
+      
+      .detail_text {
+        order: 2;
+      }
+      
+      .visual_container {
+        width: 100%;
+        height: 30vh;
+      }
+      
+      .control_button {
+        width: 8vw;
+        height: 8vw;
+      }
+      
+      .point_label {
+        font-size: 2vw;
+      }
+      
+      .timeline_track {
+        width: 90%;
+      }
 }
 @media (max-width: 699px){
     .links_holder h4 a {
@@ -525,4 +778,42 @@
         width: 8vw;
         height: 8vw;
     }
+    .section_header h4 {
+        width: 100%;
+      }
+      
+      .timeline_track {
+        width: 95%;
+      }
+      
+      .timeline_points {
+        overflow-x: auto;
+        justify-content: space-between;
+        padding-bottom: 3vh;
+      }
+      
+      .timeline_point {
+        flex: 0 0 auto;
+        margin: 0 4vw;
+      }
+      
+      .point_label {
+        font-size: 2.5vw;
+        white-space: nowrap;
+      }
+      
+      .visual_container {
+        height: 30vh;
+      }
+      
+      .control_button {
+        width: 12vw;
+        height: 12vw;
+      }
+      
+      .item_dot {
+        width: 1.5vh;
+        height: 1.5vh;
+        min-width: 1.5vh;
+      }
 }

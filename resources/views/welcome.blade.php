@@ -229,4 +229,190 @@
         </div>
     </div>
 </section>
+<section class="process_section h_100vh flex_cl justify_c align_c padding_vs padding_s10 relative">
+    <div class="section_header w_100 flex_cl align_c text_ac">
+        <h2 class="black_cl">Our Process</h2>
+        <h4 class="font_w400 w_50">From plant to bottle: discover how we create our pure essential oils</h4>
+    </div>
+    
+    <!-- Process Navigation -->
+    <div class="timeline_nav w_100 flex justify_c  mtop_m">
+        <div class="timeline_track flex justify_c">
+            <div class="timeline_progress"></div>
+            <div class="timeline_points flex justify_sb w_100">
+                <div class="timeline_point align_c flex_cl active" data-step="1">
+                    <div class="point_dot"></div>
+                    <h5 class="point_label">Harvest</h5>
+                </div>
+                <div class="timeline_point align_c flex_cl" data-step="2">
+                    <div class="point_dot"></div>
+                    <h5 class="point_label">Prepare</h5>
+                </div>
+                <div class="timeline_point align_c flex_cl" data-step="3">
+                    <div class="point_dot"></div>
+                    <h5 class="point_label">Extract</h5>
+                </div>
+                <div class="timeline_point align_c flex_cl" data-step="4">
+                    <div class="point_dot"></div>
+                    <h5 class="point_label">Test</h5>
+                </div>
+                <div class="timeline_point align_c flex_cl" data-step="5">
+                    <div class="point_dot"></div>
+                    <h5 class="point_label">Bottle</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Process Content Container -->
+    <div class="process_content w_100 h_75 flex mtop_m">
+        <!-- Step 1: Harvest -->
+        <div class="process_detail h_100 active flex w_100" data-step="1">
+            <div class="detail_text w_50 flex_cl justify_c">
+                <h3 class="black_cl">Harvesting at Peak Potency</h3>
+                <h4 class="font_w400 mtop_s">We carefully select and harvest herbs and plants at their optimal time, when essential oil content is at its highest concentration.</h4>
+                <ul class="detail_list mtop_m w_100">
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Sustainable Farming: Our farms use organic practices to ensure the purest oils</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Seasonal Selection: Each plant is harvested during its ideal season</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Hand Picked: Careful manual harvesting preserves plant integrity</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="detail_visual w_50 flex_c">
+                <div class="visual_container">
+                    <img src="{{ asset('./resources/images/process/1.jpg') }}" alt="Harvesting herbs" class="visual_img w_100 h_100">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 2: Prepare -->
+        <div class="process_detail h_100 flex w_100" data-step="2">
+            <div class="detail_text w_50 flex_cl justify_c">
+                <h3 class="black_cl">Careful Preparation</h3>
+                <h4 class="font_w400 mtop_s">Our herbs undergo a meticulous preparation process to preserve their essential compounds.</h4>
+                <ul class="detail_list mtop_m w_100">
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Sorting & Cleaning: Each batch is carefully sorted to remove any impurities</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Controlled Drying: Temperature and humidity are precisely monitored</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Preparation: Plants are prepared according to their specific requirements</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="detail_visual w_50 flex_c">
+                <div class="visual_container">
+                    <img src="{{ asset('./resources/images/process/2.jpg') }}" style="object-position: 50% 100%" alt="Preparing herbs" class="visual_img w_100 h_100">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 3: Extract -->
+        <div class="process_detail h_100 flex w_100" data-step="3">
+            <div class="detail_text w_50 flex_cl justify_c">
+                <h3 class="black_cl">Steam Distillation</h3>
+                <h4 class="font_w400 mtop_s">Using advanced steam distillation techniques, we gently extract pure essential oils while preserving their natural therapeutic properties.</h4>
+                <ul class="detail_list mtop_m w_100">
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Traditional Methods: We use time-tested distillation techniques</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Low Pressure Steam: Gentle extraction preserves delicate compounds</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Separation: Oil naturally separates from hydrosol during cooling</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="detail_visual w_50 flex_c">
+                <div class="visual_container">
+                    <img src="{{ asset('./resources/images/process/3.jpg') }}" alt="Distillation process" class="visual_img w_100 h_100">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 4: Test -->
+        <div class="process_detail h_100 flex w_100" data-step="4">
+            <div class="detail_text w_50 flex_cl justify_c">
+                <h3 class="black_cl">Quality Assurance</h3>
+                <h4 class="font_w400 mtop_s">Each batch undergoes rigorous testing to ensure purity, potency, and compliance with international standards.</h4>
+                <ul class="detail_list mtop_m w_100">
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Gas Chromatography: Advanced testing identifies all compounds present</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Organoleptic Testing: Expert evaluation of aroma, color, and viscosity</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Purity Verification: Ensuring 100% pure oil with no additives</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="detail_visual w_50 flex_c">
+                <div class="visual_container">
+                    <img src="{{ asset('./resources/images/process/4.jpg') }}" alt="Quality testing" class="visual_img w_100 h_100">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 5: Bottle -->
+        <div class="process_detail h_100 flex w_100" data-step="5">
+            <div class="detail_text w_50 flex_cl justify_c">
+                <h3 class="black_cl">Precision Bottling</h3>
+                <h4 class="font_w400 mtop_s">Our oils are carefully bottled in amber glass to protect their properties, then sealed and packaged with eco-friendly materials.</h4>
+                <ul class="detail_list mtop_m w_100">
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Amber Glass Protection: Dark glass prevents light degradation</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Precise Filling: Automated systems ensure exact measurements</h5>
+                    </li>
+                    <li class="detail_item flex gap_xs mtop_s">
+                        <div class="item_dot"></div>
+                        <h5 class="primary_cl">Quality Sealing: Airtight caps preserve freshness and potency</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="detail_visual w_50 flex_c">
+                <div class="visual_container">
+                    <img src="https://img.freepik.com/free-photo/essential-oil-bottles-arrangement_23-2149074075.jpg?w=740" alt="Bottling process" class="visual_img w_100 h_100">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Process Navigation Controls -->
+    <div class="process_controls flex gap_xs mtop_m">
+        <button class="control_button prev_step flex_c">
+            <h3><i class="ri-arrow-left-line"></i></h3>
+        </button>
+        <button class="control_button play_pause flex_c">
+            <h3><i class="ri-pause-line"></i></h3>
+        </button>
+        <button class="control_button next_step flex_c">
+            <h3><i class="ri-arrow-right-line"></i></h3>
+        </button>
+    </div>
+</section>
 @endsection

@@ -126,6 +126,9 @@ h5{
 .justify_sa{
     justify-content: space-around;
 }
+.justify_c{
+    justify-content: center;
+}
 
 /* alignments*/
 .align_c{
@@ -146,6 +149,9 @@ h5{
 /* margins */
 .mtop_s{
     margin-top: 2.5vh;
+}
+.mtop_m{
+    margin-top: 5vh;
 }
 
 /* colors */
@@ -209,8 +215,14 @@ h5{
     h2{
         font-size: 7vw;
     }
+    h3{
+        font-size: 6vw;
+    }
     h4{
         font-size: 3.5vw;
+    }
+    h5{
+        font-size: 3vw;
     }
 }
 
