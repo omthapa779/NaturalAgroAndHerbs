@@ -562,6 +562,71 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
+  //process card
+          // Animate hero elements
+          gsap.from('.hero_content h1', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+        
+        gsap.from('.hero_content h4', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            delay: 0.2,
+            ease: "power2.out"
+        });
+        
+        gsap.from('.hero_action', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            delay: 0.4,
+            ease: "power2.out"
+        });
+        
+        // Animate process circle
+        gsap.to('.process_circle', {
+            rotation: 360,
+            duration: 40,
+            repeat: -1,
+            ease: "none"
+        });
+        
+        // Animate step cards on scroll
+        gsap.from('.step_card', {
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: '.step_cards',
+                start: "top 80%",
+                once: true
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
   initProductCarousel();
 
   const cleanupProcess = initProcessTimeline();

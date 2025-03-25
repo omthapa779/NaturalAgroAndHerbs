@@ -47,7 +47,7 @@
                     <div class="links_holder mtop_s flex_cl gap_xvh">
                         <a href="/"><h4 class=" footer_link font_w400 background_cl">Home</h4></a>
                         <a href="/about"><h4 class=" footer_link font_w400 background_cl">About</h4></a>
-                        <a href="#"><h4 class=" footer_link font_w400 background_cl">Process</h4></a>
+                        <a href="/process"><h4 class=" footer_link font_w400 background_cl">Process</h4></a>
                         <a href="#"><h4 class=" footer_link font_w400 background_cl">Products</h4></a>
                         <a href="#"><h4 class=" footer_link font_w400 background_cl">Contact Us</h4></a>
                     </div>

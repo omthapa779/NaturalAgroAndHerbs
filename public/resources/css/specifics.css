@@ -793,7 +793,115 @@
 .team_info {
   padding: 1.5vh 1vw;
 }
+/* Process Hero */
+.process_hero {
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+
+/* Process Overview */
+.bg_light {
+  background-color: rgba(44, 95, 45, 0.05);
+}
+
+.overview_stats {
+  background-color: white;
+  padding: 3vh 2vw;
+  border-radius: 0.7vw;
+  box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+/* Step Cards */
+.step_card {
+  background-color: white;
+  box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.step_number {
+  background-color: var(--primary_color);
+  width: 5vw;
+  min-width: 5vw;
+}
+
+.step_content {
+  flex: 1;
+}
+
+.step_visual {
+  overflow: hidden;
+}
+
+.step_visual img {
+  transition: transform 0.8s ease;
+}
+
+.step_card:hover .step_visual img {
+  transform: scale(1.05);
+}
+
+/* Certificate */
+.certificate_container {
+  position: relative;
+}
+
+.certificate_badge {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  width: 8vw;
+  height: 8vw;
+  background-color: var(--primary_color);
+  border-radius: 50%;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.badge_inner {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 0.2vh solid var(--background-color);
+  text-align: center;
+}
 @media(max-width: 999px){
+  .process_hero h1 {
+    width: 100%;
+}
+
+.process_hero h4 {
+    width: 80%;
+}
+
+.overview_content, .commitment_content {
+    flex-direction: column;
+    gap: 5vh;
+}
+
+.overview_text, .overview_visual, .commitment_text, .commitment_visual {
+    width: 100%;
+}
+.hero_content_process{
+  text-align: center;
+  align-items: center;
+}
+.step_content {
+    flex-direction: column;
+}
+
+.step_text, .step_visual {
+    width: 100%;
+}
+
+.step_number {
+    width: 10vw;
+    min-width: 10vw;
+}
+
+.certificate_badge {
+    width: 15vw;
+    height: 15vw;
+}
   .section_header h4 {
     width: 80%;
   }
@@ -951,7 +1059,7 @@
     .benefits_home ul{
       margin-left: 4vw;
     }
-    .benefits_home .custom-button, .error_actions .custom-button{
+    .benefits_home .custom-button, .error_actions .custom-button, .commitment_action .custom-button{
       width: 100%;
       text-align: center;
     }
@@ -1008,13 +1116,31 @@
 
 }
 @media (max-width: 699px){
+  .process_hero h4 {
+    width: 100%;
+  }
+
+  .steps_header h4 {
+      width: 100%;
+  }
+
+  .step_number {
+      width: 15vw;
+      min-width: 15vw;
+  }
+
+  .certificate_badge {
+      width: 20vw;
+      height: 20vw;
+  }
+
   .section_header h4 {
     width: 100%;
   } 
 
   .team_card {
-      flex: 0 0 100%; /* 1 card per row on mobile */
-      margin-bottom: 3vh;
+    flex: 0 0 100%; /* 1 card per row on mobile */
+    margin-bottom: 3vh;
   }
 
   .team_photo_holder {

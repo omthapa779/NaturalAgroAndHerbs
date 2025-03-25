@@ -14,3 +14,4 @@ Route::fallback(function () {
 
 //static pages
 Route::get('/about', [PagesController::class, 'About']);
+Route::get('/process', [PagesController::class, 'Process']);

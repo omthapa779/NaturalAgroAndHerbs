@@ -52,6 +52,9 @@ h5{
 .w_fc{
     width: fit-content;
 }
+.w_40 {
+    width: 40%;
+}
 .w_50{
     width: 50%;
 }

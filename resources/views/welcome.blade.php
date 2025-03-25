@@ -33,6 +33,7 @@
         </div>
     </div>
 </section>
+
 <section class="about_us_section w_100 h_100vh">
     <div class="about_us_section_holder w_100 h_100 flex_c flex_cl padding_s10 gap_xvh">
         <h2 class="text_ac w_50 black_cl">About Natural Agro and Herbs</h2>
@@ -46,6 +47,7 @@
         <img src="{{ asset('./resources/images/home/lemon_grass.png') }}" class="about_image second">
     </div>
 </section>
+
 <section class="popular_categories w_100 h_100vh padding_vs padding_s10 gap_xvh">
     <h2 class="black_cl">Popular Categories</h2>
     <div class="grid h_100 padding_vxs">
@@ -98,6 +100,7 @@
         </div>
     </div>
 </section>
+
 <section class="featured_products w_100 h_fc padding_vs padding_s10 flex_cl">
     <div class="title_holder_home flex justify_sb align_c">
         <h2 class="black_cl">Featured Products</h2>
@@ -229,6 +232,7 @@
         </div>
     </div>
 </section>
+
 <section class="process_section h_100vh flex_cl justify_c align_c padding_vs padding_s10 relative">
     <div class="section_header w_100 flex_cl align_c text_ac">
         <h2 class="black_cl">Our Process</h2>
@@ -415,6 +419,7 @@
         </button>
     </div>
 </section>
+
 <section class="benefits_home w_100 h_100vh padding_vs padding_s10 flex justify_sb gap_xs align_c">
     <div class="benefits_home_content w_100 h_100 flex_cl gap_xvh">
         <h2 class="black_cl w_75">Benefits of Essentials Oils</h2>
