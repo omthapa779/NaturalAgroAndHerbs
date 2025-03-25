@@ -526,6 +526,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
   });
+  
+  // Animate team cards on scroll
+  gsap.from('.team_card', {
+    y: 30,
+    opacity: 0,
+    stagger: 0.1,
+    duration: 0.6,
+    ease: "power2.out",
+    scrollTrigger: {
+        trigger: '.team_grid',
+        start: "top 80%",
+        once: true
+    }
+  });
+
+  // Add hover effect similar to feature cards from previous sections
+  const teamCards = document.querySelectorAll('.team_card');
+
+  teamCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+            y: -8,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+            y: 0,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+  });
 
   initProductCarousel();
 

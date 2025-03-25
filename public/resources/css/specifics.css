@@ -678,18 +678,19 @@
       transform: translateX(-50%) scale(0.2);
   }
 }
-
 .mission_tab{
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 0.5vw 1.5vw;
 }
+
 .icon_holder{
   background-color: var(--primary_color);
   border-radius: 50%;
-  width: 4vw;
-  height: 8vh;
+  width: 3vw;
+  height: 6.2vh;
   animation: circle 2.5s infinite ease-out;
 }
+
 @keyframes circle {
  from{
   transform: rotate(-360deg);
@@ -740,60 +741,71 @@
   .feature_card:hover .feature_indicator {
       width: 100%;
   }
-  
-  /* Quality Commitment */
-  .point_dot {
-      width: 1vh;
-      height: 1vh;
-      min-width: 1vh;
-      border-radius: 50%;
-      background-color: var(--primary_color);
-      margin-top: 0.8vh;
-  }
-  
-  .visual_container {
-      width: 80%;
-      height: 50vh;
-      border-radius: 1vw;
-      overflow: hidden;
-      box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.1);
-  }
-  
-  .quality_image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 1vw;
-      transition: transform 0.8s ease;
-  }
-  
-  .visual_container:hover .quality_image {
-      transform: scale(1.05);
-  }
-  
-  .quality_badge {
-      position: absolute;
-      top: 2vh;
-      right: 2vw;
-      width: 5vw;
-      height: 5vw;
-      background-color: var(--primary_color);
-      border-radius: 50%;
-      animation: pulse2 2s infinite ease-in-out;
-  }
-  
-  .badge_inner {
-      width: 90%;
-      height: 90%;
-      border-radius: 50%;
-      border: 0.2vh solid var(--background-color);
-  }
-  
-  @keyframes pulse2 {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-  }
+ 
+ /* Team Grid Layout */
+ .team_grid {
+  gap: 0; /* Remove gap since we're using justify-space-between */
+}
+
+.team_card {
+  flex: 0 0 32%; /* Each card takes up ~32% of the width, allowing 3 cards per row */
+  margin-bottom: 2vh; /* Add bottom margin for spacing between rows */
+  background-color: white;
+  box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.team_photo_holder {
+  height: 50vh;
+}
+
+.team_card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0.3vh;
+  background-color: var(--primary_color);
+  transition: width 0.3s ease;
+}
+
+.team_card:hover {
+  transform: translateY(-0.5vh);
+  box-shadow: 0 0.8vh 2vh rgba(0, 0, 0, 0.1);
+}
+
+.team_card:hover::after {
+  width: 100%;
+}
+
+.team_photo {
+  transition: transform 0.8s ease;
+  object-position: center top;
+}
+
+.team_card:hover .team_photo {
+  transform: scale(1.05);
+}
+
+.team_info {
+  padding: 1.5vh 1vw;
+}
 @media(max-width: 999px){
+  .section_header h4 {
+    width: 80%;
+  }
+
+  .team_card {
+      flex: 0 0 49%; /* 2 cards per row on tablet */
+      margin-bottom: 2vh;
+  }
+
+  .team_photo_holder {
+      height: 40vh;
+  }
   .error_actions {
     flex-direction: column;
   }
@@ -996,6 +1008,18 @@
 
 }
 @media (max-width: 699px){
+  .section_header h4 {
+    width: 100%;
+  } 
+
+  .team_card {
+      flex: 0 0 100%; /* 1 card per row on mobile */
+      margin-bottom: 3vh;
+  }
+
+  .team_photo_holder {
+      height: 40vh;
+  }
   .feature_icon_container {
     width: 15vw;
     height: 15vw;
