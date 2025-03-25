@@ -715,6 +715,71 @@ document.addEventListener("DOMContentLoaded", () => {
            }
        });
    });    
+
+  // Fullscreen Navigation
+  const menuButton = document.querySelector('.menu_extended');
+  const fullscreenNav = document.querySelector('.fullscreen_nav');
+  const navCloseBtn = document.querySelector('.nav_close_btn');
+  const navLinks = document.querySelectorAll('.nav_link');
+
+  if (menuButton && fullscreenNav && navCloseBtn) {
+    // Open navigation when menu button is clicked
+    menuButton.addEventListener('click', () => {
+      fullscreenNav.classList.add('active');
+      document.body.classList.add('overflow_hidden');
+      
+      // Animate decorative circles
+      gsap.from('.circle1', {
+        scale: 0,
+        duration: 1,
+        ease: "elastic.out(1, 0.5)",
+        delay: 0.2
+      });
+      
+      gsap.from('.circle2', {
+        scale: 0,
+        duration: 1,
+        ease: "elastic.out(1, 0.5)",
+        delay: 0.3
+      });
+      
+      gsap.from('.circle3', {
+        scale: 0,
+        duration: 1,
+        ease: "elastic.out(1, 0.5)",
+        delay: 0.4
+      });
+    });
+    
+    // Close navigation when close button is clicked
+    navCloseBtn.addEventListener('click', () => {
+      fullscreenNav.classList.remove('active');
+      document.body.classList.remove('overflow_hidden');
+    });
+    
+    // Close navigation when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        fullscreenNav.classList.remove('active');
+        document.body.classList.remove('overflow_hidden');
+      });
+    });
+    
+    // Prevent scrolling when navigation is open
+    fullscreenNav.addEventListener('wheel', (e) => {
+      e.stopPropagation();
+    });
+    
+    // Prevent touch scrolling on the body when navigation is open
+    document.addEventListener('touchmove', (e) => {
+      if (fullscreenNav.classList.contains('active')) {
+        if (!fullscreenNav.contains(e.target)) {
+          e.preventDefault();
+        }
+      }
+    }, { passive: false });
+  }
+
   initProductCarousel();
 
   const cleanupProcess = initProcessTimeline();
