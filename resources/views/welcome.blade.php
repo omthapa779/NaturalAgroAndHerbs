@@ -450,7 +450,7 @@
             </h4>
         </div>
         <div class="bottom_content_contact">
-            <a href="#"><h4 class="text_button primary_cl font_w500">Other Contact Options <i class="ri-arrow-right-line primary_cl"></i></h4></a>
+            <a href="/contact"><h4 class="text_button primary_cl font_w500">Other Contact Options <i class="ri-arrow-right-line primary_cl"></i></h4></a>
         </div>
     </div>
     <div class="right_contact_section w_100 h_100 flex_c">

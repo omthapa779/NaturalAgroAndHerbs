@@ -25,8 +25,9 @@
                     <h4><a href="/contact">Contact</a></h4>
                 </div>
             </div>
-            <div class="left_nav h_100 flex  align_c gap_xs">
-                <h4><a href="#" class="custom-button secondary">Inquire Now!</a></h4>
+            <div class="left_nav h_100 flex align_c gap_xs">
+                <h4><a href="/contact" class="custom-button secondary">Inquire Now!</a></h4>
+                <button class="custom-button primary menu_extended"><h4><i class="ri-menu-fill background_cl"></i></h4></button>
             </div>
         </navs>
         @yield('content')
@@ -49,7 +50,7 @@
                         <a href="/about"><h4 class=" footer_link font_w400 background_cl">About</h4></a>
                         <a href="/process"><h4 class=" footer_link font_w400 background_cl">Process</h4></a>
                         <a href="#"><h4 class=" footer_link font_w400 background_cl">Products</h4></a>
-                        <a href="#"><h4 class=" footer_link font_w400 background_cl">Contact Us</h4></a>
+                        <a href="/contact"><h4 class=" footer_link font_w400 background_cl">Contact Us</h4></a>
                     </div>
                 </div>
                 <div class="left_link_container w_fc h_fc padding_sxs">

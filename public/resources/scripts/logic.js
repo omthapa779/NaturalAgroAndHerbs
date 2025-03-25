@@ -565,14 +565,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //process card
           // Animate hero elements
-          gsap.from('.hero_content h1', {
+          gsap.from('.hero_content_process h1', {
             y: 30,
             opacity: 0,
             duration: 0.8,
             ease: "power2.out"
         });
         
-        gsap.from('.hero_content h4', {
+        gsap.from('.hero_content_process h4', {
             y: 30,
             opacity: 0,
             duration: 0.8,
@@ -626,7 +626,95 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
+
+     // Animate hero elements
+     gsap.from('.hero_content_contact h1', {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out"
+  });
+  
+  gsap.from('.hero_content_contact h4', {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.2,
+      ease: "power2.out"
+  });
+  
+  // Animate floating bottles
+  gsap.to('.bottle_1', {
+      y: -20,
+      rotation: 20,
+      duration: 5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+  });
+  
+  gsap.to('.bottle_2', {
+      y: 20,
+      rotation: -15,
+      duration: 6,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 0.5
+  });
+  
+  gsap.to('.bottle_3', {
+      y: -15,
+      rotation: 10,
+      duration: 7,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 1
+  });
+
+   // FAQ accordion functionality
+   const faqItems = document.querySelectorAll('.faq_item');
         
+   faqItems.forEach(item => {
+       const question = item.querySelector('.faq_question');
+       
+       question.addEventListener('click', () => {
+           // Close all other items
+           faqItems.forEach(otherItem => {
+               if (otherItem !== item && otherItem.classList.contains('active')) {
+                   otherItem.classList.remove('active');
+                   
+                   // Reset icon rotation
+                   const otherIcon = otherItem.querySelector('.question_icon i');
+                   gsap.to(otherIcon, {
+                       rotation: 0,
+                       duration: 0.3,
+                       ease: "power2.out"
+                   });
+               }
+           });
+           
+           // Toggle current item
+           item.classList.toggle('active');
+           
+           // Animate the icon rotation
+           const icon = item.querySelector('.question_icon i');
+           if (item.classList.contains('active')) {
+               gsap.to(icon, {
+                   rotation: 45,
+                   duration: 0.3,
+                   ease: "power2.out"
+               });
+           } else {
+               gsap.to(icon, {
+                   rotation: 0,
+                   duration: 0.3,
+                   ease: "power2.out"
+               });
+           }
+       });
+   });    
   initProductCarousel();
 
   const cleanupProcess = initProcessTimeline();
