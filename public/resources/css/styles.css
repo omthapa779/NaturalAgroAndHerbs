@@ -110,9 +110,17 @@ h5{
     padding-right: 2.5vw;
     padding-left: 2.5vw;
 }
+.padding_vxxs{
+    padding-top: 1.2vh;
+    padding-bottom: 1.2vh;
+}
 .padding_vxs{
     padding-top: 2.5vh;
     padding-bottom: 2.5vh;
+}
+.padding_vxm{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
 .padding_vs{
     padding-top: 10vh;
@@ -159,6 +167,9 @@ h5{
 }
 
 /* gaps */
+.gap_xxs{
+    gap: 0.5vw;
+}
 .gap_xs{
     gap: 1.5vw;
 }
@@ -186,8 +197,14 @@ h5{
 .mtop_s{
     margin-top: 2.5vh;
 }
+.mbottom_s{
+    margin-bottom: 2.5vh;
+}
 .mtop_m{
     margin-top: 5vh;
+}
+.mtop_1{
+    margin-top: 1vh;
 }
 .mleft_1{
     margin-left: 1vw;
@@ -325,6 +342,50 @@ h5{
 .z_100 {
     z-index: 100;
 }
+.bg_light {
+    background-color: #f8f9fa;
+  }
+  
+  .opacity_7 {
+    opacity: 0.7;
+  }
+  
+  .opacity_8 {
+    opacity: 0.8;
+  }
+  
+  .transform_y_n50 {
+    transform: translateY(-50%);
+  }
+  
+  .right_1 {
+    right: 1vw;
+  }
+  
+  .right_4 {
+    right: 4vw;
+  }
+  
+  .top_50p {
+    top: 50%;
+  }
+  
+  .border_none {
+    border: none;
+  }
+  
+  .border_1 {
+    border-width: 0.1vw;
+  }
+  
+  .border_light {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .hover_bg_light:hover {
+    background-color: rgba(44, 95, 45, 0.1);
+    transition: background-color 0.3s ease;
+  }
 @media (max-width: 999px) {
     h1{
         font-size: 10vw;

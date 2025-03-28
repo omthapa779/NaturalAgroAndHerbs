@@ -8,7 +8,7 @@
             <h1 class="black_cl">Our Process</h1>
             <h4 class="font_w400 w_50 mtop_s">From carefully selected plants to the final drop in the bottle, discover the meticulous journey behind our pure essential oils. Each step is crafted with precision to ensure the highest quality products for your wellbeing.</h4>
             <div class="hero_action mtop_m">
-                <a href="#process_steps" class="custom-button primary">
+                <a href="/products" class="custom-button primary">
                     <h4 class="background_cl">Interested to buy?</h4>
                 </a>
             </div>

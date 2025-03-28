@@ -84,7 +84,7 @@
             <li><h4 class="font_w500">Respiratory Benefits</h4></li>
         </ul>
 
-        <h4><a href="#" class="custom-button primary mtop_s">Explore Our Oils</a></h4>
+        <h4><a href="/products" class="custom-button primary mtop_s">Explore Our Oils</a></h4>
     </div>
     <div class="image_holder_benefit w_100 h_100 overflow_hidden  bradius_s">
         <img src="{{asset('./resources/images/home/lemon_grass.png')}}" class="object_fc w_100 h_100" alt="Benefits of Essential Oils">

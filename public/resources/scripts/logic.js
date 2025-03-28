@@ -780,15 +780,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: false });
   }
 
-  initProductCarousel();
+  // Fade in login container
+  const loginContainer = document.querySelector('.login_container');
+  if (loginContainer) {
+      setTimeout(() => {
+          loginContainer.style.opacity = '1';
+          loginContainer.style.transform = 'translateY(0)';
+      }, 100);
+  }
 
+  initProductCarousel();
+  PasswordToggle();
   const cleanupProcess = initProcessTimeline();
   
   // Store cleanup function for memory management
   window._cleanupFunctions = window._cleanupFunctions || {};
   window._cleanupFunctions.processSection = cleanupProcess;
   
-})
+});
 
 function initProductCarousel() {
   const carousel = document.querySelector('.product_carousel');
@@ -797,6 +806,19 @@ function initProductCarousel() {
   // Get carousel elements
   const cards = carousel.querySelectorAll('.product_card:not(.clone)');
   const totalOriginalCards = cards.length;
+  
+  // Clone first few cards and append them to the end of the carousel
+  function cloneCards() {
+    const cloneCount = getVisibleCardsCount();
+    for (let i = 0; i < cloneCount; i++) {
+      const clone = cards[i].cloneNode(true);
+      clone.classList.add('clone');
+      carousel.appendChild(clone);
+    }
+  }
+
+  // Call clone function to add cloned cards
+  cloneCards();
   
   // Navigation buttons
   const prevBtn = document.querySelector('.prev_btn');
@@ -830,8 +852,6 @@ function initProductCarousel() {
     if (visibleCount === 1) {
       const wrapperWidth = carousel.parentElement.offsetWidth;
       const cardWidth = getCardWidth();
-      // Calculate the offset to center the card
-      // We subtract the card width and add half of the remaining space on each side
       return (wrapperWidth - cardWidth) / 2 - parseFloat(getComputedStyle(carousel).paddingLeft);
     }
     return 0;
@@ -853,13 +873,11 @@ function initProductCarousel() {
       duration: duration,
       ease: "power2.out",
       onComplete: () => {
-  // Check if we need to loop
-  if (index >= totalOriginalCards) {
-    // Jump to first slide without animation
-    currentIndex = 0;
+        // If the last card reaches the left, move back to the beginning without animation
+        if (index >= totalOriginalCards) {
+          currentIndex = 0;
           gsap.set(carousel, { x: centeringOffset });
         } else if (index < 0) {
-          // Jump to last slide without animation
           currentIndex = totalOriginalCards - 1;
           gsap.set(carousel, { x: -currentIndex * cardWidth + centeringOffset });
         } else {
@@ -882,10 +900,7 @@ function initProductCarousel() {
   
   // Set up auto scroll - move by one card at a time
   function startAutoScroll() {
-    // Clear any existing interval
     stopAutoScroll();
-    
-    // Create new interval
     autoScrollInterval = setInterval(() => {
       nextSlide();
     }, 4000); // Scroll every 4 seconds
@@ -927,11 +942,8 @@ function initProductCarousel() {
   
   // Handle window resize
   const debouncedResize = debounce(() => {
-    // Recalculate card width and centering offset
     const cardWidth = getCardWidth();
     const centeringOffset = getCenteringOffset();
-    
-    // Update position based on new card width and centering
     gsap.set(carousel, { x: -currentIndex * cardWidth + centeringOffset });
   }, 250);
   
@@ -952,7 +964,7 @@ function initProductCarousel() {
       }, wait);
     };
   }
-  
+
   // Memory optimization: Store the carousel instance for cleanup if needed
   carousel._carouselData = {
     cleanup: () => {
@@ -961,6 +973,7 @@ function initProductCarousel() {
     }
   };
 }
+
 
 function initProcessTimeline() {
   // Check if process section exists
@@ -1107,5 +1120,28 @@ function initProcessTimeline() {
     if (nextButton) nextButton.removeEventListener('click', () => {});
     if (playPauseButton) playPauseButton.removeEventListener('click', toggleAutoPlay);
   };
+}
+
+function PasswordToggle() {
+  const togglePassword = document.querySelector('.toggle_password');
+  const passwordInput = document.querySelector('#password');
+  
+  if (togglePassword && passwordInput) {
+    togglePassword.addEventListener('click', function() {
+      // Toggle password visibility
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+
+      // Toggle icon
+      const icon = this.querySelector('i');
+      if (type === 'password') {
+        icon.classList.remove('ri-eye-off-line');
+        icon.classList.add('ri-eye-line');
+      } else {
+        icon.classList.remove('ri-eye-line');
+        icon.classList.add('ri-eye-off-line');
+      }
+    });
+  }
 }
 

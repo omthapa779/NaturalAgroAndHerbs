@@ -12,7 +12,7 @@
         <!-- Decorative Elements -->
         <div class="contact_decorative">
             <div class="floating_bottle bottle_1" style="background-image: url('./resources/images/home/hero_product1.png');"></div>
-            <div class="floating_bottle bottle_2" style="background-image: url('./resources/images/home/hero_product1.png');"></div>
+            <div class="floating_bottle bottle_2" style="background-image: url('./resources/images/home/hero_product2.png');"></div>
             <div class="floating_bottle bottle_3" style="background-image: url('./resources/images/home/hero_product1.png');"></div>
         </div>
     </section>
@@ -39,8 +39,8 @@
                             <h4><i class="ri-mail-line"></i></h4>
                         </div>
                         <h3 class="black_cl mtop_s">Email Us</h3>
-                        <h4 class="font_w400 mtop_s primary_cl">info@naturalagro.com <br> 
-                            support@naturalagro.com</h4>
+                        <h4 class="font_w400 mtop_s primary_cl">n77agroherbs@gmail.com <br> 
+                            bkhadka5@gmail.com</h4>
                         <a href="mailto:info@naturalagro.com" class="contact_link mtop_s">
                             <span>Send Email</span>
                             <h4><i class="ri-arrow-right-line"></i></h4>
@@ -66,8 +66,8 @@
                             <h4><i class="ri-phone-line"></i></h4>
                         </div>
                         <h3 class="black_cl mtop_s">Call Us</h3>
-                        <h4 class="font_w400 mtop_s primary_cl font_w500">(+977) 9851025698</h4>
-                        <a href="tel:+9779851025698" class="contact_link mtop_s">
+                        <h4 class="font_w400 mtop_s primary_cl font_w500">(+977) 9851074527</h4>
+                        <a href="tel:+9779851074527" class="contact_link mtop_s">
                             <span>Call Now</span>
                             <h4><i class="ri-arrow-right-line"></i></h4>
                         </a>
