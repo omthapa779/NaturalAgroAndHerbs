@@ -25,11 +25,11 @@
         
         <div class="stat_card flex bg_white bradius_s shadow_s">
             <div class="icon_holder flex_c" style="background-color: var(--accent-color);">
-                <h3 class="font_w400"><i class="ri-calendar-line background_cl"></i></h3>
+                <h3 class="font_w400"><i class="ri-user-line background_cl"></i></h3>
             </div>
             <div class="flex_cl gap_xvh mleft_s">
-                <h3 class="black_cl">{{ $newProductsThisMonth }}</h3>
-                <h4>Product this Month</h4>
+                <h3 class="black_cl">{{ $weeklyVisitors }}</h3>
+                <h4>Weekly Visitors</h4>
             </div>
         </div>
         
@@ -68,7 +68,6 @@
                 
             </a>
         </div>
-        
         <div class="products_grid mtop_s">
             @foreach ($products as $product)
                 <div class="flex_cl bg_white bradius_s shadow_s overflow_hidden hover_up">
@@ -80,17 +79,48 @@
                         </div>
                     @endif
                     <div class="flex_cl gap_xvh padding_sxxs padding_vxs">
-                        <h4 class="black_cl font_w500">{{ $product->product_name }}</h4>
                         <div class="flex justify_sb align_c">
-                            <h5 class="category_tag">{{ $product->category }}</h5>
-                            <h5 class="primary_cl">NPR {{ $product->price }}</h5>
+                            <h4 class="black_cl font_w500">{{ $product->product_name }}</h4>
                         </div>
-                        <h5 class="text_desc">{!! Str::limit($product->product_description, 100) !!}</h5>
+                        <div class="flex gap_xxs">
+                            <div class="product_category_tag padding_sxxs padding_vxxs">
+                                <h6 class="background_cl font_w500">{{ ucfirst($product->category) }}</h6>
+                            </div>
+                            @if($product->is_featured)
+                                <div class="featured_badge padding_sxxs padding_vxxs">
+                                    <h6 class="font_w500">Featured</h6>
+                                </div>
+                            @endif
+                        </div>
+                        <h5 class="text_desc">{{ Str::limit(strip_tags($product->product_description), 100) }}</h5>
+                        
+                        <!-- Size Selection and Price -->
+                        <div class="flex_cl gap_xxs w_100 mtop_s">
+                            @if($product->sizes && count($product->sizes) > 0)
+                                <select class="admin-size-selector contact_input padding_vxxs bradius_s w_100" data-product-id="{{ $product->id }}">
+                                    @foreach($product->sizes as $size)
+                                    <option value="{{ $size->id }}" data-price="{{ $size->price }}" {{ $size->is_default ? 'selected' : '' }}>{{ $size->size }}</option>
+                                    @endforeach
+                                </select>
+                                <h5 class="primary_cl font_w500" id="admin-price-{{ $product->id }}">
+                                    @if($product->defaultSize())
+                                        NPR {{ number_format($product->defaultSize()->price, 2) }}
+                                    @else
+                                        NPR {{ number_format($product->sizes[0]->price, 2) }}
+                                    @endif
+                                </h5>
+                            @elseif($product->price)
+                                <h5 class="primary_cl font_w500">NPR {{ number_format($product->price, 2) }}</h5>
+                            @else
+                                <h5 class="primary_cl font_w500">Price on request</h5>
+                            @endif
+                        </div>
+                        
                         <div class="flex gap_xs mtop_s w_100 justify_sb">
                             <a href="{{ route('admin.product.edit', $product->id) }}" class="custom-button product_admin_link secondary">
-                                <h4><i class="ri-edit-line"></i> Edit </h4>
+                                <h4><i class="ri-edit-line"></i> Edit</h4>
                             </a>
-                            <form method="POST" action="{{ route('admin.product.delete', $product->id) }}" style="display: inline;">
+                            <form method="POST" action="{{ route('admin.product.delete', $product->id) }}" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="custom-button primary product_admin_link">
@@ -104,4 +134,17 @@
         </div>
     </div>
 </div>
+<script>
+    document.querySelectorAll('.admin-size-selector').forEach(selector => {
+        selector.addEventListener('change', function() {
+            const productId = this.getAttribute('data-product-id');
+            const selectedOption = this.options[this.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+            
+            // Update the price display
+            const priceElement = document.getElementById(`admin-price-${productId}`);
+            priceElement.textContent = `NPR ${parseFloat(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        });
+    });
+</script>
 @endsection

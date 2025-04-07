@@ -4,17 +4,17 @@
 <section class="hero_section w_100 h_85vh flex_cl flex_c padding_vs padding_s10" name="Landing Section">
     <div class="marquee_container w_100 h_100 flex_c">
         <div class="marquee_content flex gap_xs">
-            <h1>MYSTIC OIL AND HERBS MYSTIC OIL AND HERBS </h1>
-            <h1>MYSTIC OIL AND HERBS MYSTIC OIL AND HERBS </h1>
-            <h1>MYSTIC OIL AND HERBS MYSTIC OIL AND HERBS </h1>
+            <h1>NATURAL AGRO AND HERBS NATURAL AGRO AND HERBS </h1>
+            <h1>NATURAL AGRO AND HERBS NATURAL AGRO AND HERBS </h1>
+            <h1>NATURAL AGRO AND HERBS NATURAL AGRO AND HERBS </h1>
         </div>
         <div class="marquee_content flex gap_xs">
-            <h1>MYSTIC OIL AND HERBS MYSTIC OIL AND HERBS </h1>
-            <h1>MYSTIC OIL AND HERBS MYSTIC OIL AND HERBS </h1>
+            <h1>NATURAL AGRO AND HERBS NATURAL AGRO AND HERBS </h1>
+            <h1>NATURAL AGRO AND HERBS NATURAL AGRO AND HERBS </h1>
         </div>
         <div class="marquee_content flex gap_xs">
-            <h1>MYSTIC OIL AND HERBS MYSTIC OIL AND HERBS </h1>
-            <h1>MYSTIC OIL AND HERBS MYSTIC OIL AND HERBS </h1>
+            <h1>NATURAL AGRO AND HERBS NATURAL AGRO AND HERBS </h1>
+            <h1>NATURAL AGRO AND HERBS NATURAL AGRO AND HERBS </h1>
         </div>
     </div>
     <div class="product_image_hero w_100 h_100 flex_c">
@@ -22,8 +22,8 @@
     </div>
     <div class="hero_contents w_100 h_100 flex justify_sb">
         <div class="right_hero w_100 flex_cl justify_fe gap_xvh">
-            <h2 class="black_cl w_75">Nature’s Best, Bottled for You</h2>
-            <h4 class="font_w500 w_75">Discover premium essential oils made from the finest herbs and plants, bringing you pure wellness.</h4>
+            <h2 class="black_cl w_75">Pure Essence, Natural Wellness.</h2>
+            <h4 class="font_w500 w_75">Discover the finest essential oils extracted from nature's best herbs and plants, crafted from purity and wellness.</h4>
             <h4><a href="/products" class="custom-button primary">Explore Our Oils</a></h4>
         </div>
         <div class="left_hero w_100 flex justify_fe align_fe gap_xvh">
@@ -36,10 +36,9 @@
 
 <section class="about_us_section w_100 h_100vh">
     <div class="about_us_section_holder w_100 h_100 flex_c flex_cl padding_s10 gap_xvh">
-        <h2 class="text_ac w_50 black_cl">About Mystic Oil and Herbs</h2>
-        <h4 class="font_w500 text_ac w_50">Mystic Oil and Herbs brings you the finest essential oils, carefully extracted from wild and organically grown herbs. Using advanced steam distillation,
-            we capture nature’s purest essence while adhering to the highest global standards. Rooted in purity and sustainability, our oils are crafted to nourish the mind, body, 
-            and soul—delivering the power of nature in every drop.
+        <h2 class="text_ac w_50 black_cl">About Natural Agro and Herbs</h2>
+        <h4 class="font_w500 text_ac w_50">At Natural Agro and Herbs, We produce premium essentials oils from wild and organically grown herbs and spices, adhering to stringent E.U and U.S.D.A standards.
+            Our advanced steam distillation techniques ensure the highest quality, delivering nature's pure essence to our customer worldwide.
         </h4>
         <a href="/about"><h4 class="text_button primary_cl">Learn More. <i class="ri-arrow-right-line primary_cl"></i></h4></a>
     </div>
@@ -120,33 +119,88 @@
             
             <div class="product_carousel w_100 h_fc flex">
                 @foreach($featuredProducts as $product)
-                    <div class="product_card flex_cl h_fc">
+                    <div class="product_card flex_cl h_fc bg_white bradius_s shadow_m overflow_h hover_up">
                         <div class="image_holder flex_c" style="background-image: url('{{ asset('storage/' . $product->product_image) }}')"></div>
-                        <div class="product_content gap_xvh">
-                            <h5 class="product_category w_fc font_w500">{{ $product->category }}</h5>
+                        <div class="product_content gap_xvh padding_sxxs padding_vxxs">
+                            <div class="flex gap_xxs">
+                                <div class="product_category_tag padding_sxxs padding_vxxs">
+                                    <h6 class="background_cl font_w500">{{ ucfirst($product->category) }}</h6>
+                                </div>
+                                @if($product->is_featured)
+                                <div class="featured_badge padding_sxxs padding_vxxs">
+                                    <h6 class="font_w500">Featured</h6>
+                                </div>
+                                @endif
+                            </div>
                             <h3 class="black_cl">{{ $product->product_name }}</h3>
-                            <div class="costButton w_100 mtop_s flex_cl gap_xvh">
-                                <h4 class="primary_cl">NPR {{ number_format($product->price, 2) }}</h4>
-                                <h4><a href="{{ route('product.detail', $product->id) }}" class="custom-button primary w_100 text_ac">View Details</a></h4>
+                            <div class="costButton w_100  flex_cl gap_xs">
+                                <div class="flex_cl gap_xxs w_100">
+                                    <h4 class="primary_cl font_w500" id="carousel-price-{{ $product->id }}">
+                                        @if($product->sizes && $product->defaultSize())
+                                            NPR {{ number_format($product->defaultSize()->price, 2) }}
+                                        @elseif($product->price)
+                                            NPR {{ number_format($product->price, 2) }}
+                                        @else
+                                            Price on request
+                                        @endif
+                                    </h4>
+                                    @if($product->sizes && count($product->sizes) > 1)
+                                    <select class="carousel-size-selector contact_input padding_vxxs bradius_s w_100" data-product-id="{{ $product->id }}">
+                                        @foreach($product->sizes as $size)
+                                        <option value="{{ $size->id }}" data-price="{{ $size->price }}" {{ $size->is_default ? 'selected' : '' }}>{{ $size->size }}</option>
+                                        @endforeach
+                                    </select>
+                                    @endif
+                                </div>
+                                <a href="{{ route('product.detail', $product->id) }}" class="custom-button primary w_100 text_ac">
+                                    <h4 class="background_cl">View Details</h4>
+                                </a>
                             </div>
                         </div>
                     </div>
                 @endforeach
                 @foreach($featuredProducts as $product)
-                    <div class="product_card flex_cl h_fc">
+                    <div class="product_card flex_cl h_fc bg_white bradius_s shadow_m overflow_h hover_up">
                         <div class="image_holder flex_c" style="background-image: url('{{ asset('storage/' . $product->product_image) }}')"></div>
-                        <div class="product_content gap_xvh">
-                            <h5 class="product_category w_fc font_w500">{{ $product->category }}</h5>
+                        <div class="product_content gap_xvh padding_sxxs padding_vxxs">
+                            <div class="flex gap_xxs">
+                                <div class="product_category_tag padding_sxxs padding_vxxs">
+                                    <h6 class="background_cl font_w500">{{ ucfirst($product->category) }}</h6>
+                                </div>
+                                @if($product->is_featured)
+                                <div class="featured_badge padding_sxxs padding_vxxs">
+                                    <h6 class="font_w500">Featured</h6>
+                                </div>
+                                @endif
+                            </div>
                             <h3 class="black_cl">{{ $product->product_name }}</h3>
-                            <div class="costButton w_100 mtop_s flex_cl gap_xvh">
-                                <h4 class="primary_cl">NPR {{ number_format($product->price, 2) }}</h4>
-                                <h4><a href="{{ route('product.detail', $product->id) }}" class="custom-button primary w_100 text_ac">View Details</a></h4>
+                            <div class="costButton w_100 mtop_s flex_cl gap_xs">
+                                <div class="flex_cl gap_xxs w_100">
+                                    @if($product->sizes && count($product->sizes) > 1)
+                                    <select class="carousel-size-selector contact_input padding_vxxs bradius_s w_100" data-product-id="{{ $product->id }}">
+                                        @foreach($product->sizes as $size)
+                                        <option value="{{ $size->id }}" data-price="{{ $size->price }}" {{ $size->is_default ? 'selected' : '' }}>{{ $size->size }}</option>
+                                        @endforeach
+                                    </select>
+                                    @endif
+                                    <h4 class="primary_cl font_w500" id="carousel-price-{{ $product->id }}">
+                                        @if($product->sizes && $product->defaultSize())
+                                            NPR {{ number_format($product->defaultSize()->price, 2) }}
+                                        @elseif($product->price)
+                                            NPR {{ number_format($product->price, 2) }}
+                                        @else
+                                            Price on request
+                                        @endif
+                                    </h4>
+                                </div>
+                                <a href="{{ route('product.detail', $product->id) }}" class="custom-button primary w_100 text_ac">
+                                    <h4 class="background_cl">View Details</h4>
+                                </a>
                             </div>
                         </div>
                     </div>
                 @endforeach
-            </div>
-            
+            </div>            
             <!-- Right Navigation Button -->
             <button class="carousel_nav next_btn flex_c" aria-label="Next products">
                 <h3><i class="ri-arrow-right-line"></i></h3>

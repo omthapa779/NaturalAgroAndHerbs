@@ -10,6 +10,17 @@ lenis.on("scroll", (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+   document.querySelectorAll('.carousel-size-selector').forEach(selector => {
+        selector.addEventListener('change', function() {
+            const productId = this.getAttribute('data-product-id');
+            const selectedOption = this.options[this.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+            
+            // Update the price display
+            const priceElement = document.getElementById(`carousel-price-${productId}`);
+            priceElement.textContent = `NPR ${parseFloat(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        });
+    });
   // Use more efficient selectors and event delegation where possible
   const linksHolder = document.querySelector(".links_holder")
 

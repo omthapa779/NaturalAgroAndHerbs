@@ -42,14 +42,42 @@
                         <option value="our combos" {{ $product->category == 'our combos' ? 'selected' : '' }}>Our Combos</option>
                     </select>
                 </div>
+            </div>
 
-                <!-- Price -->
-                <div class="form_group">
-                    <label for="price" class="form_label">
-                        <h4 class="font_w500">Price (NPR)</h4>
-                    </label>
-                    <input type="number" step="0.01" name="price" id="price" value="{{ old('price', $product->price) }}" required class="form_input w_100">
+            <!-- Product Sizes -->
+            <div class="form_group w_100">
+                <label class="form_label">
+                    <h4 class="font_w500">Product Sizes and Prices</h4>
+                </label>
+                <div id="sizes-container" class="flex_cl gap_s">
+                    @foreach($product->sizes as $index => $size)
+                    <div class="size-row flex justify_sb gap_s align_c {{ $index > 0 ? 'mtop_s' : '' }}">
+                        <div class="flex_cl w_100">
+                            <label class="form_label">
+                                <h5 class="font_w500">Size (e.g., 10ml, 30ml)</h5>
+                            </label>
+                            <input type="text" name="sizes[{{ $index }}][size]" value="{{ $size->size }}" required class="form_input w_100">
+                            <input type="hidden" name="sizes[{{ $index }}][id]" value="{{ $size->id }}">
+                        </div>
+                        <div class="flex_cl w_100">
+                            <label class="form_label">
+                                <h5 class="font_w500">Price (NPR)</h5>
+                            </label>
+                            <input type="number" step="0.01" name="sizes[{{ $index }}][price]" value="{{ $size->price }}" required class="form_input w_100">
+                        </div>
+                        <div class="flex align_c gap_xs mtop_s">
+                            <input type="radio" name="default_size" value="{{ $index }}" {{ $size->is_default ? 'checked' : '' }}>
+                            <h5>Default</h5>
+                        </div>
+                        <button type="button" class="remove-size custom-button secondary" {{ count($product->sizes) <= 1 ? 'style="display: none;"' : '' }}>
+                            <h5><i class="ri-delete-bin-line"></i></h5>
+                        </button>
+                    </div>
+                    @endforeach
                 </div>
+                <button type="button" id="add-size" class="custom-button secondary mtop_s">
+                    <h5><i class="ri-add-line"></i> Add Another Size</h5>
+                </button>
             </div>
 
             <!-- Featured Checkbox -->
@@ -179,6 +207,76 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('benefits_input').value = benefitsEditor.root.innerHTML;
         document.getElementById('how_to_use_input').value = howToUseEditor.root.innerHTML;
     });
+
+    // Product sizes functionality
+    let sizeIndex = {{ count($product->sizes) - 1 }};
+    const sizesContainer = document.getElementById('sizes-container');
+    const addSizeBtn = document.getElementById('add-size');
+
+    // Add new size row
+    addSizeBtn.addEventListener('click', function() {
+        sizeIndex++;
+        const newRow = document.createElement('div');
+        newRow.className = 'size-row flex gap_s align_c justify_sb';
+        newRow.innerHTML = `
+            <div class="flex_cl w_100">
+                <label class="form_label">
+                    <h5 class="font_w500">Size (e.g., 10ml, 30ml)</h5>
+                </label>
+                <input type="text" name="sizes[${sizeIndex}][size]" required class="form_input w_100">
+            </div>
+            <div class="flex_cl w_100">
+                <label class="form_label">
+                    <h5 class="font_w500">Price (NPR)</h5>
+                </label>
+                <input type="number" step="0.01" name="sizes[${sizeIndex}][price]" required class="form_input w_100">
+            </div>
+            <div class="flex align_c gap_xs mtop_s">
+                <input type="radio" name="default_size" value="${sizeIndex}">
+                <h5>Default</h5>
+            </div>
+            <button type="button" class="remove-size custom-button secondary">
+                <h5><i class="ri-delete-bin-line"></i></h5>
+            </button>
+        `;
+        sizesContainer.appendChild(newRow);
+
+        // Show all remove buttons when there's more than one size
+        document.querySelectorAll('.remove-size').forEach(btn => {
+            btn.style.display = 'block';
+        });
+    });
+
+    // Remove size row
+    sizesContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-size')) {
+            const row = e.target.closest('.size-row');
+            row.remove();
+            
+            // Hide remove buttons if only one size remains
+            const sizeRows = document.querySelectorAll('.size-row');
+            if (sizeRows.length === 1) {
+                sizeRows[0].querySelector('.remove-size').style.display = 'none';
+            }
+
+            // Update default radio button values
+            updateDefaultRadioValues();
+        }
+    });
+
+    // Update default radio values when rows are removed
+    function updateDefaultRadioValues() {
+        const sizeRows = document.querySelectorAll('.size-row');
+        sizeRows.forEach((row, index) => {
+            const radio = row.querySelector('input[type="radio"]');
+            radio.value = index;
+            
+            // If this was the selected default and got removed, select the first one
+            if (index === 0 && !document.querySelector('input[name="default_size"]:checked')) {
+                radio.checked = true;
+            }
+        });
+    }
 });
 </script>
 
@@ -206,6 +304,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .ql-editor {
     min-height: 250px;
+}
+
+.size-row {
+    padding: 1.5vh 1vw;
+    background-color: rgba(44, 95, 45, 0.05);
+    border-radius: 0.7vw;
 }
 </style>
 @endsection
