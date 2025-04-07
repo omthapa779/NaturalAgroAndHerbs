@@ -5,12 +5,12 @@
     <div class="right_about_page w_100 h_100 flex_cl gap_xvh justify_sb">
         <h1 class="black_cl">About Us</h1>
         <h4 class="font_w400  text_aj">Nestled in the heart of Nepal, in the shadow of the majestic 
-            Mount Everest, Natural Agro and Herbs is dedicated to bringing the pure 
+            Mount Everest, Mystic Oil and Herbs is dedicated to bringing the pure 
             essence of the Himalayas to the world. We specialize in producing premium 
             essential oils extracted from wild and organically grown herbs and spices,
             reflecting the pristine environment from which they originate.​
         </h4>
-        <div class="mission_tab flex_cl justify_sb w_100 h_100 padding_vxs padding_sxs bradius_s mtop_s">
+        <div class="mission_tab flex_cl gap_xs justify_c w_100 h_100 padding_vxs padding_sxs bradius_s mtop_s">
             
             <div class="mission_top flex gap_xs align_c">
                 <div class="icon_holder flex_c">
@@ -18,7 +18,6 @@
                 </div>
                 <h3 class="black_cl">Our Mission</h3>
             </div>
-
             <h4 class="font_w400 text_aj">
                 Our mission is to deliver nature's purest essence to our customers worldwide,
                 promoting well-being through high-quality essential oils while upholding 

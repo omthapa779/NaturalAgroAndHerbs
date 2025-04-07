@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', '') | Natural Agro & Herbs</title>
+    <title>@yield('title', '') | Mystic Oil & Herbs</title>
     <link rel="stylesheet" href="{{ asset('./resources/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('./resources/css/specifics.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
@@ -91,7 +91,7 @@
             
             <div class="nav_footer flex justify_sb align_c w_100">
                 <div class="contact_info contact_info_nav">
-                    <h4 class="background_cl">info@naturalagro.com</h4>
+                    <h4 class="background_cl">info@mysticoil.com</h4>
                     <h4 class="background_cl">(+977) 9851025698</h4>
                 </div>
                 <div class="social_links flex gap_m">
@@ -135,7 +135,7 @@
         @yield('content')
         <footer class="footer w_100 h_fc flex justify_sb padding_vs padding_s10 gap_xvh">
             <div class="logo_container_footer w_100 flex_cl justify_sb">
-                <h2 class="accent_cl">Natural Agro and Herbs</h2>
+                <h2 class="accent_cl">Mystic Oil And <br> Herbs</h2>
 
                 <div class="social_link_holder flex gap_xs">
                     <a href="#"><i class="ri-whatsapp-line social_icons background_cl"></i></a>

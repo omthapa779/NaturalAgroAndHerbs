@@ -2,6 +2,9 @@
 @section('title', 'Edit Product')
 
 @section('content')
+<!-- Include Quill stylesheet -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
 <div class="product_upload_page w_100 h_fc padding_vs padding_s10 relative">
     <!-- Page Header -->
     <div class="flex justify_sb align_c w_100 mtop_s">
@@ -13,7 +16,7 @@
 
     <!-- Edit Form -->
     <div class="upload_form_container bg_white bradius_s shadow_s mtop_m padding_sxxs padding_vxs">
-        <form method="POST" action="{{ route('admin.product.update', $product->id) }}" enctype="multipart/form-data" class="product_form w_100 flex_cl gap_s">
+        <form method="POST" action="{{ route('admin.product.update', $product->id) }}" enctype="multipart/form-data" class="product_form w_100 flex_cl gap_s" id="product-form">
             @csrf
             @method('PUT')
 
@@ -71,7 +74,8 @@
                 <label for="product_description" class="form_label">
                     <h4 class="font_w500">Product Description</h4>
                 </label>
-                <textarea name="product_description" id="product_description" required class="form_textarea w_100">{{ old('product_description', $product->product_description) }}</textarea>
+                <div id="product_description_editor" class="quill_editor" style="height: 300px;">{!! old('product_description', $product->product_description) !!}</div>
+                <input type="hidden" name="product_description" id="product_description_input">
             </div>
 
             <!-- Benefits -->
@@ -79,7 +83,8 @@
                 <label for="benefits" class="form_label">
                     <h4 class="font_w500">Benefits</h4>
                 </label>
-                <textarea name="benefits" id="benefits" required class="form_textarea w_100">{{ old('benefits', $product->benefits) }}</textarea>
+                <div id="benefits_editor" class="quill_editor" style="height: 300px;">{!! old('benefits', $product->benefits) !!}</div>
+                <input type="hidden" name="benefits" id="benefits_input">
             </div>
 
             <!-- How to Use -->
@@ -87,7 +92,8 @@
                 <label for="how_to_use" class="form_label">
                     <h4 class="font_w500">How to Use</h4>
                 </label>
-                <textarea name="how_to_use" id="how_to_use" required class="form_textarea w_100">{{ old('how_to_use', $product->how_to_use) }}</textarea>
+                <div id="how_to_use_editor" class="quill_editor" style="height: 300px;">{!! old('how_to_use', $product->how_to_use) !!}</div>
+                <input type="hidden" name="how_to_use" id="how_to_use_input">
             </div>
 
             <!-- Image Section -->
@@ -124,4 +130,82 @@
         </form>
     </div>
 </div>
+
+<!-- Include Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Quill editors
+    const toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        [{ 'header': 1 }, { 'header': 2 }],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],
+        [{ 'indent': '-1'}, { 'indent': '+1' }],
+        [{ 'direction': 'rtl' }],
+        [{ 'size': ['small', false, 'large', 'huge'] }],
+        [{ 'color': [] }, { 'background': [] }],
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+        ['clean']
+    ];
+
+    const productDescriptionEditor = new Quill('#product_description_editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: toolbarOptions
+        }
+    });
+
+    const benefitsEditor = new Quill('#benefits_editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: toolbarOptions
+        }
+    });
+
+    const howToUseEditor = new Quill('#how_to_use_editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: toolbarOptions
+        }
+    });
+
+    // Form submission handler
+    document.getElementById('product-form').addEventListener('submit', function() {
+        // Get HTML content from Quill editors and set to hidden inputs
+        document.getElementById('product_description_input').value = productDescriptionEditor.root.innerHTML;
+        document.getElementById('benefits_input').value = benefitsEditor.root.innerHTML;
+        document.getElementById('how_to_use_input').value = howToUseEditor.root.innerHTML;
+    });
+});
+</script>
+
+<style>
+.quill_editor {
+    background-color: white;
+    border-radius: 0.7vw;
+    margin-bottom: 2vh;
+}
+
+.ql-toolbar {
+    border-top-left-radius: 0.7vw;
+    border-top-right-radius: 0.7vw;
+    background-color: #f8f9fa;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.ql-container {
+    border-bottom-left-radius: 0.7vw;
+    border-bottom-right-radius: 0.7vw;
+    border-color: rgba(0, 0, 0, 0.2);
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 0.95vw;
+}
+
+.ql-editor {
+    min-height: 250px;
+}
+</style>
 @endsection

@@ -39,7 +39,7 @@
                                 <h4><i class="ri-upload-2-fill background_cl"></i></h4>
                                 <h4 class="background_cl">Product Upload</h4>
                             </a>
-                            <a href="#" class="nav_link flex gap_xs align_c">
+                            <a href="{{ route('product.index') }}" class="nav_link flex gap_xs align_c">
                                 <h4><i class="ri-shopping-bag-3-line background_cl"></i></h4>
                                 <h4 class="background_cl">Product List</h4>
                             </a>
@@ -92,7 +92,7 @@
             
             <div class="nav_footer flex justify_sb align_c w_100">
                 <div class="contact_info contact_info_nav">
-                    <h4 class="background_cl">info@naturalagro.com</h4>
+                    <h4 class="background_cl">info@mysticoil.com</h4>
                     <h4 class="background_cl">(+977) 9851025698</h4>
                 </div>
                 <div class="social_links flex gap_m">
@@ -123,7 +123,7 @@
                 <div class="links_holder flex gap_xs">
                     <h4><a href="/dashboard">Dashboard</a></h4>
                     <h4><a href="/product-upload">Product Upload</a></h4>
-                    <h4><a href="/products">Products List</a></h4>
+                    <h4><a href="{{ route('product.index') }}">Products List</a></h4>
                 </div>
             </div>
             <div class="left_nav h_100 flex align_c gap_xs">

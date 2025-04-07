@@ -26,7 +26,7 @@
         <div class="overview_content w_100 flex justify_sb align_c">
             <div class="overview_text w_50">
                 <h2 class="black_cl">Crafting Nature's Essence</h2>
-                <h4 class="font_w400 mtop_s">At Natural Agro and Herbs, we believe that the quality of our essential oils begins long before distillation. Our comprehensive 5-step process ensures that every drop captures the plant's full therapeutic potential.</h4>
+                <h4 class="font_w400 mtop_s">At Mystic Oil and Herbs, we believe that the quality of our essential oils begins long before distillation. Our comprehensive 5-step process ensures that every drop captures the plant's full therapeutic potential.</h4>
             </div>
             <div class="overview_visual w_40 flex_c">
                 <div class="overview_stats flex_cl">

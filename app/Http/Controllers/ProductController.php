@@ -112,4 +112,29 @@ class ProductController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'Product updated successfully!');
     }
+   
+    public function index(Request $request)
+    {
+        $query = Product::query();
+        
+        // Apply search filter if provided
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('product_name', 'like', "%{$search}%")
+                ->orWhere('product_description', 'like', "%{$search}%")
+                ->orWhere('category', 'like', "%{$search}%");
+            });
+        }
+        
+        // Apply category filter if provided
+        if ($request->has('category') && $request->category != '') {
+            $query->where('category', $request->category);
+        }
+        
+        // Get paginated results
+        $products = $query->orderBy('created_at', 'desc')->paginate(12);
+        
+        return view('admin.product_index', compact('products'));
+    }
 }

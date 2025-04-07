@@ -54,6 +54,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/product-upload', [ProductController::class, 'showUploadForm'])->name('product.upload');
     // Handle the product upload form submission
     Route::post('product-upload', [ProductController::class, 'uploadProduct'])->name('product.store');
+    // Product Index
+Route::get('/products-admin', [ProductController::class, 'index'])->name('product.index');
     // Route to delete a product
     Route::delete('admin/product/{id}', [ProductController::class, 'deleteProduct'])->name('admin.product.delete');
     Route::get('admin/product/{id}/edit', [ProductController::class, 'editProduct'])->name('admin.product.edit');

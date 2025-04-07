@@ -52,7 +52,7 @@
                 <h3 class="font_w400"><i class="ri-add-circle-line primary_cl"></i></h3>
                 <h4 class="mtop_1">Add Product</h4>
             </a>
-            <a href="#" class="action_btn flex_cl flex_c bg_white bradius_s shadow_s hover_up">
+            <a href="{{ route('product.index') }}" class="action_btn flex_cl flex_c bg_white bradius_s shadow_s hover_up">
                 <h3 class="font_w400"><i class="ri-list-check primary_cl"></i></h3>
                 <h4 class="mtop_1">All Products</h4>
             </a>
@@ -63,7 +63,7 @@
     <div class="w_100 mtop_m">
         <div class="flex justify_sb align_c mtop_s">
             <h3 class="black_cl section_title">Recent Products</h3>
-            <a href="" class="flex align_c gap_xs primary_cl hover_up">
+            <a href="{{ route('product.index') }}" class="flex align_c gap_xs primary_cl hover_up">
                 <h4>View All <i class="ri-arrow-right-line"></i></h4>
                 
             </a>
@@ -85,7 +85,7 @@
                             <h5 class="category_tag">{{ $product->category }}</h5>
                             <h5 class="primary_cl">NPR {{ $product->price }}</h5>
                         </div>
-                        <h5 class="text_desc">{{ Str::limit($product->product_description, 100) }}</h5>
+                        <h5 class="text_desc">{!! Str::limit($product->product_description, 100) !!}</h5>
                         <div class="flex gap_xs mtop_s w_100 justify_sb">
                             <a href="{{ route('admin.product.edit', $product->id) }}" class="custom-button product_admin_link secondary">
                                 <h4><i class="ri-edit-line"></i> Edit </h4>
